@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shoppingapp.databinding.FragmentLikeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LikeFragment : Fragment() {
 
     private lateinit var binding: FragmentLikeBinding

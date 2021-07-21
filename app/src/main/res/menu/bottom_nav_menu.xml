@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="홈"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/shopFragment"
+        android:title="스토어"
+        android:icon="@drawable/ic_store"/>
+    <item
+        android:id="@+id/categoryFragment"
+        android:title="모아보기"
+        android:icon="@drawable/ic_box"/>
+    <item
+        android:id="@+id/likeFragment"
+        android:title="찜"
+        android:icon="@drawable/ic_like"/>
+    <item
+        android:id="@+id/myPageFragment"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_person"/>
+
+</menu>

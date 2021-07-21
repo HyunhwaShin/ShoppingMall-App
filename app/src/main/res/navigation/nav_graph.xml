@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.shoppingapp.ui.fragments.menufragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_likeFragment"
+            app:destination="@id/likeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.shoppingapp.ui.fragments.menufragments.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="com.example.shoppingapp.ui.fragments.menufragments.LikeFragment"
+        android:label="LikeFragment" />
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.example.shoppingapp.ui.fragments.menufragments.StoreFragment"
+        android:label="StoreFragment" />
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.example.shoppingapp.ui.fragments.menufragments.MyPageFragment"
+        android:label="MyPageFragment" />
+    <fragment
+        android:id="@+id/basketFragment"
+        android:name="com.example.shoppingapp.ui.fragments.BasketFragment"
+        android:label="BasketFragment" >
+        <action
+            android:id="@+id/action_basketFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.shoppingapp.ui.fragments.PaymentFragment"
+        android:label="PaymentFragment" />
+    <fragment
+        android:id="@+id/userSettingFragment"
+        android:name="com.example.shoppingapp.ui.fragments.UserSettingFragment"
+        android:label="UserSettingFragment" >
+        <action
+            android:id="@+id/action_userSettingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.shoppingapp.ui.fragments.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_userSettingFragment"
+            app:destination="@id/userSettingFragment" />
+    </fragment>
+</navigation>
