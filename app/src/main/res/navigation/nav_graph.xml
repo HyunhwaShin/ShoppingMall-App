@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.HomeFragment"
@@ -10,31 +12,51 @@
             android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_likeFragment"
             app:destination="@id/likeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_myPageFragment"
             app:destination="@id/myPageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailStuffFragment"
+            app:destination="@id/detailStuffFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_detailStuffFragment"
+            app:destination="@id/detailStuffFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
     <fragment
         android:id="@+id/likeFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.LikeFragment"
-        android:label="LikeFragment" />
-    <fragment
-        android:id="@+id/storeFragment"
-        android:name="com.example.shoppingapp.ui.fragments.menufragments.StoreFragment"
-        android:label="StoreFragment" />
+        android:label="LikeFragment" >
+        <action
+            android:id="@+id/action_likeFragment_to_detailStuffFragment"
+            app:destination="@id/detailStuffFragment" />
+        <action
+            android:id="@+id/action_likeFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myPageFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.MyPageFragment"
-        android:label="MyPageFragment" />
+        android:label="MyPageFragment" >
+        <action
+            android:id="@+id/action_myPageFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
     <fragment
         android:id="@+id/basketFragment"
         android:name="com.example.shoppingapp.ui.fragments.BasketFragment"
@@ -48,19 +70,29 @@
         android:name="com.example.shoppingapp.ui.fragments.PaymentFragment"
         android:label="PaymentFragment" />
     <fragment
-        android:id="@+id/userSettingFragment"
-        android:name="com.example.shoppingapp.ui.fragments.UserSettingFragment"
-        android:label="UserSettingFragment" >
+        android:id="@+id/detailStuffFragment"
+        android:name="com.example.shoppingapp.ui.fragments.DetailStuffFragment"
+        android:label="DetailStuffFragment" >
         <action
-            android:id="@+id/action_userSettingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_detailStuffFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+        <action
+            android:id="@+id/action_detailStuffFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.shoppingapp.ui.fragments.SplashFragment"
-        android:label="SplashFragment" >
+        android:id="@+id/shopFragment"
+        android:name="com.example.shoppingapp.ui.fragments.menufragments.ShopFragment"
+        android:label="ShopFragment" >
         <action
-            android:id="@+id/action_splashFragment_to_userSettingFragment"
-            app:destination="@id/userSettingFragment" />
+            android:id="@+id/action_shopFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_detailShopFragment"
+            app:destination="@id/detailShopFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailShopFragment"
+        android:name="com.example.shoppingapp.ui.fragments.DetailShopFragment"
+        android:label="DetailShopFragment" />
 </navigation>

@@ -9,7 +9,7 @@ import com.example.shoppingapp.databinding.FragmentStoreBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StoreFragment: Fragment() {
+class ShopFragment: Fragment() {
 
     private lateinit var binding: FragmentStoreBinding
     override fun onCreateView(
@@ -18,6 +18,6 @@ class StoreFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStoreBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

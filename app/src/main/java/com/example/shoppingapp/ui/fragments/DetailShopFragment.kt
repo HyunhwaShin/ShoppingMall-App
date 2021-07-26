@@ -18,6 +18,6 @@ class DetailShopFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailshopBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

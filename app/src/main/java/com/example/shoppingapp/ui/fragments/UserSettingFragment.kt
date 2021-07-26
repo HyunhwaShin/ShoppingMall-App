@@ -18,6 +18,6 @@ class UserSettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUsersettingBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

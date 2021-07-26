@@ -18,6 +18,6 @@ class LikeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLikeBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

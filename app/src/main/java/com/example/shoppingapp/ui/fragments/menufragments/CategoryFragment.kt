@@ -18,6 +18,6 @@ class CategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoryBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

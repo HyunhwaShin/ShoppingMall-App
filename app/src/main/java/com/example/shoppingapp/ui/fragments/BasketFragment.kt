@@ -18,6 +18,6 @@ class BasketFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBasketBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }

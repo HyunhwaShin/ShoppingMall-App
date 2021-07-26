@@ -18,6 +18,6 @@ class MyPageFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMypageBinding.inflate(LayoutInflater.from(context))
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 }
