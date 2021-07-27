@@ -18,9 +18,6 @@
             android:id="@+id/action_homeFragment_to_myPageFragment"
             app:destination="@id/myPageFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_detailStuffFragment"
-            app:destination="@id/detailStuffFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_shopFragment"
             app:destination="@id/shopFragment" />
         <action
@@ -32,9 +29,6 @@
         android:name="com.example.shoppingapp.ui.fragments.menufragments.CategoryFragment"
         android:label="CategoryFragment" >
         <action
-            android:id="@+id/action_categoryFragment_to_detailStuffFragment"
-            app:destination="@id/detailStuffFragment" />
-        <action
             android:id="@+id/action_categoryFragment_to_basketFragment"
             app:destination="@id/basketFragment" />
     </fragment>
@@ -42,9 +36,6 @@
         android:id="@+id/likeFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.LikeFragment"
         android:label="LikeFragment" >
-        <action
-            android:id="@+id/action_likeFragment_to_detailStuffFragment"
-            app:destination="@id/detailStuffFragment" />
         <action
             android:id="@+id/action_likeFragment_to_basketFragment"
             app:destination="@id/basketFragment" />
@@ -70,29 +61,11 @@
         android:name="com.example.shoppingapp.ui.fragments.PaymentFragment"
         android:label="PaymentFragment" />
     <fragment
-        android:id="@+id/detailStuffFragment"
-        android:name="com.example.shoppingapp.ui.fragments.DetailStuffFragment"
-        android:label="DetailStuffFragment" >
-        <action
-            android:id="@+id/action_detailStuffFragment_to_basketFragment"
-            app:destination="@id/basketFragment" />
-        <action
-            android:id="@+id/action_detailStuffFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.ShopFragment"
         android:label="ShopFragment" >
         <action
             android:id="@+id/action_shopFragment_to_basketFragment"
             app:destination="@id/basketFragment" />
-        <action
-            android:id="@+id/action_shopFragment_to_detailShopFragment"
-            app:destination="@id/detailShopFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/detailShopFragment"
-        android:name="com.example.shoppingapp.ui.fragments.DetailShopFragment"
-        android:label="DetailShopFragment" />
 </navigation>

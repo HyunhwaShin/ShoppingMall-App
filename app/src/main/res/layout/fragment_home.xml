@@ -49,14 +49,13 @@
 
        </androidx.constraintlayout.widget.ConstraintLayout>
 
-       <GridLayout
-           android:id="@+id/gridLayout"
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/stuffGridRecyclerview"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:orientation="horizontal"
-           android:rowCount="2"
-           android:columnCount="3">
+           tools:listitem="@layout/item_stuff">
 
-       </GridLayout>
+       </androidx.recyclerview.widget.RecyclerView>
    </LinearLayout>
 </layout>

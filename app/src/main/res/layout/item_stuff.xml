@@ -1,72 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:layout_margin="10dp"
+        app:cardElevation="8dp">
 
-        <ImageView
-            android:id="@+id/stuffImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:src="@drawable/ic_ex_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent">
 
-        <ToggleButton
-            android:id="@+id/btn_favorite"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/button_favorite"
-            android:checked="false"
-            android:text=""
-            android:textOff=""
-            android:textOn=""
-            app:layout_constraintBottom_toBottomOf="@+id/stuffImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="15dp"/>
+            <ImageView
+                android:id="@+id/stuffImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                android:src="@drawable/ic_ex_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/storeName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="18sp"
-            android:text="shopName ex)현화의 목걸이 가게"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stuffImage"
-            android:layout_marginLeft="5dp"/>
+            <ToggleButton
+                android:id="@+id/btn_favorite"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button_favorite"
+                android:checked="false"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toBottomOf="@+id/stuffImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="15dp"/>
 
-        <TextView
-            android:id="@+id/stuffName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:text="stuffName ex)반짝반짝 진주귀걸이"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storeName"
-            android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/storeName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:text="shopName ex)현화의 목걸이 가게"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuffImage"
+                android:layout_marginLeft="5dp"/>
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textSize="18sp"
-            android:text="price ex)50,000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stuffName"
-            android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/stuffName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="stuffName ex)반짝반짝 진주귀걸이"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/storeName"
+                android:layout_marginLeft="5dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="price ex)50,000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuffName"
+                android:layout_marginLeft="5dp"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/stuffImage"
+                android:button="@android:color/transparent"
+                android:background="@drawable/custom_checkbox"
+                android:checked="false"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                />
+            <!--        android:visibility="gone"/>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 </layout>
