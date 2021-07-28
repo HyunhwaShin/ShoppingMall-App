@@ -62,7 +62,6 @@
 
         </LinearLayout>
 
-
         <Button
             android:id="@+id/btn_start"
             android:layout_width="150dp"
