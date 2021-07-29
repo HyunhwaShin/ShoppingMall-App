@@ -24,16 +24,6 @@
                app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintVertical_chainStyle="packed" />
 
-           <!--           <androidx.appcompat.widget.SearchView-->
-<!--               android:id="@+id/searchView"-->
-<!--               android:layout_width="0dp"-->
-<!--               android:layout_height="match_parent"-->
-<!--               app:layout_constraintStart_toEndOf="@+id/textView"-->
-<!--               app:layout_constraintTop_toTopOf="parent"-->
-<!--               app:iconifiedByDefault="false"-->
-<!--               app:queryBackground="@drawable/searchview_background"-->
-<!--               app:queryHint=" 검색어를 입력해주세요" />-->
-
            <ImageView
                android:id="@+id/imageView"
                android:layout_width="wrap_content"
@@ -59,7 +49,7 @@
 
            <ImageButton
                android:id="@+id/btn_basket"
-               android:layout_width="50dp"
+               android:layout_width="45dp"
                android:layout_height="match_parent"
                android:background="@android:color/transparent"
                android:scaleType="fitCenter"
@@ -71,7 +61,7 @@
        </androidx.constraintlayout.widget.ConstraintLayout>
 
        <androidx.recyclerview.widget.RecyclerView
-           android:id="@+id/stuffGridRecyclerview"
+           android:id="@+id/stuff_grid_recyclerview"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:orientation="horizontal"
