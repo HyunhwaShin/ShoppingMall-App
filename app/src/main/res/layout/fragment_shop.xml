@@ -23,6 +23,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/btn_basket"
                 android:layout_width="45dp"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_basket"

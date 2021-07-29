@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.ShopViewPagerAdapter
 import com.example.shoppingapp.databinding.FragmentShopBinding
 import com.example.shoppingapp.ui.fragments.ShopBookmarkFragment
@@ -27,7 +29,13 @@ class ShopFragment: Fragment() {
         binding = FragmentShopBinding.inflate(LayoutInflater.from(context))
 
         val pagerAdapter = ShopViewPagerAdapter(requireActivity())
-        binding.shopViewpager.adapter = pagerAdapter
+        binding.apply {
+            shopViewpager.adapter = pagerAdapter
+
+            btnBasket.setOnClickListener {
+                findNavController().navigate(R.id.action_shopFragment_to_basketFragment)
+            }
+        }
 
         TabLayoutMediator(binding.tabLayout, binding.shopViewpager){ tab, position ->
             tab.text = tabLayoutArray[position]
