@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
         app:cardBackgroundColor="@android:color/white"
@@ -29,8 +29,8 @@
 
             <ToggleButton
                 android:id="@+id/btn_favorite"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="@drawable/button_favorite"
                 android:checked="false"
                 android:text=""
@@ -41,12 +41,11 @@
                 android:layout_marginBottom="15dp"/>
 
             <TextView
-                android:id="@+id/storeName"
+                android:id="@+id/shopName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="18sp"
+                android:textSize="10sp"
                 android:text="shopName ex)현화의 목걸이 가게"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stuffImage"
                 android:layout_marginLeft="5dp"/>
@@ -56,27 +55,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="10sp"
                 android:text="stuffName ex)반짝반짝 진주귀걸이"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/storeName"
+                app:layout_constraintTop_toBottomOf="@+id/shopName"
                 android:layout_marginLeft="5dp"/>
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:textSize="18sp"
+                android:textSize="10sp"
                 android:text="price ex)50,000"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stuffName"
                 android:layout_marginLeft="5dp"/>
 
             <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/btn_checkbox"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/stuffImage"
                 android:button="@android:color/transparent"
