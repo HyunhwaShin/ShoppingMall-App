@@ -40,7 +40,6 @@ class HomeFragment: Fragment() {
         stuffAdapter = StuffAdapter()
 
         val gridLayoutManager = GridLayoutManager(requireContext(),2)
-        gridLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         binding.apply {
             stuffGridRecyclerview.adapter = stuffAdapter
@@ -56,6 +55,7 @@ class HomeFragment: Fragment() {
                 var handled = false
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     //search event with server
+                    homeViewModel.searchTest(etSearch.text.toString())
                     etSearch.setText("")
                     handled = true
                 }
@@ -64,7 +64,14 @@ class HomeFragment: Fragment() {
 
         }
 
-        homeViewModel.getStuff.observe(viewLifecycleOwner,{
+//        homeViewModel.getStuff.observe(viewLifecycleOwner,{
+//            stuffAdapter.submitList(it)
+//        })
+        homeViewModel.mockStuff.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        homeViewModel.mockSearch.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 

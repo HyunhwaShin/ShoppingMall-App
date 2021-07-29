@@ -19,6 +19,11 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
 
         fun bind(item : Stuff){
             binding.apply {
+                stuffName.text = item.stuffName
+                shopName.text = item.shopName
+                price.text = item.stuffPrice
+                btnCheckbox.isChecked = item.checkBox
+                btnFavorite.isChecked = item.likeButton
 
                 itemView.setOnClickListener {
                     var intent = Intent(context,DetailStuffActivity::class.java).apply {
