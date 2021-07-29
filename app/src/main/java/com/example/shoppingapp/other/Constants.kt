@@ -7,4 +7,6 @@ object Constants {
     const val KEY_NAME = "KEY_NAME"
     const val KEY_EMAIL = "KEY_EMAIL"
 
+    const val PAGE_COUNT = 2
+
 }
