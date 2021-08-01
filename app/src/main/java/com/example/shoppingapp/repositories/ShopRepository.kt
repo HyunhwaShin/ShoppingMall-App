@@ -14,10 +14,14 @@ class ShopRepository @Inject constructor(
         return shopRankingDao.getAll()
     }
 
-    suspend fun insertShop(shopRanking: ShopRanking): Long {
+    suspend fun insertBookmarkShop(shopRanking: ShopRanking): Long {
         return shopRankingDao.insertShop(shopRanking)
     }
-    suspend fun deleteShop(shopRanking: ShopRanking) {
+    suspend fun deleteBookmarkShop(shopRanking: ShopRanking) {
         return shopRankingDao.deleteShop(shopRanking)
+    }
+
+    fun getAllBookmarkShops(): Flow<List<ShopRanking>>{
+        return shopRankingDao.getAllBookmarkShops()
     }
 }

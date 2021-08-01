@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ShopRankingFragment: Fragment() {
 
     private lateinit var binding: FragmentShoprankingBinding
-    private lateinit var shopAdapter: ShopAdapter
+    lateinit var shopAdapter: ShopAdapter
     private val shopRankingViewModel : ShopRankingViewModel by viewModels()
 
     override fun onCreateView(
@@ -26,22 +26,21 @@ class ShopRankingFragment: Fragment() {
     ): View? {
         binding = FragmentShoprankingBinding.inflate(LayoutInflater.from(context))
 
-        shopAdapter = ShopAdapter(this)
+        shopAdapter = ShopAdapter()
 
         binding.apply {
             shopRankingRecyclerview.adapter = shopAdapter
             shopRankingRecyclerview.layoutManager = LinearLayoutManager(context)
+
         }
 
         shopRankingViewModel.exShopRanking.observe(viewLifecycleOwner,{
             shopAdapter.submitList(it)
         })
+
 //        shopRankingViewModel.getShop.observe(viewLifecycleOwner,{
 //            shopAdapter.submitList(it)
 //        })
-
-
-
 
         return binding.root
     }

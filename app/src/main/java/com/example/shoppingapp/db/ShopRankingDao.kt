@@ -14,4 +14,8 @@ interface ShopRankingDao {
 
     @Delete
     suspend fun deleteShop(shopRanking: ShopRanking)
+
+
+    @Query("SELECT * FROM shopRanking WHERE bookmarkButton = 1")
+    fun getAllBookmarkShops() : Flow<List<ShopRanking>>
 }

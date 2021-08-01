@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +15,7 @@ import com.example.shoppingapp.ui.activities.DetailShopActivity
 import com.example.shoppingapp.ui.fragments.ShopRankingFragment
 
 
-class ShopAdapter(fragment: ShopRankingFragment): RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
+class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
     lateinit var context : Context
 
     inner class ShopViewHolder(private var binding : ItemShopBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +31,6 @@ class ShopAdapter(fragment: ShopRankingFragment): RecyclerView.Adapter<ShopAdapt
                     }
                     context.startActivity(intent)
                 }
-
             }
         }
     }

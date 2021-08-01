@@ -38,6 +38,9 @@
                 android:layout_height="25dp"
                 android:background="@drawable/button_bookmark"
                 android:checked="false"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
                 android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
