@@ -23,7 +23,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/ranking_shop_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현화의 원피스 가게"
@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ToggleButton
-                android:id="@+id/btn_favorite"
+                android:id="@+id/btn_bookmark"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:background="@drawable/button_bookmark"

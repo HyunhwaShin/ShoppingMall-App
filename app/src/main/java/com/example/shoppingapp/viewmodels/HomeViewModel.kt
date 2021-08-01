@@ -14,6 +14,7 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     val getStuff : LiveData<List<Stuff>> = stuffRepository.getStuffs().asLiveData()
+    //dummy
     private val _mockStuff : MutableLiveData<List<Stuff>> = MutableLiveData()
     val mockStuff: LiveData<List<Stuff>> = _mockStuff
 

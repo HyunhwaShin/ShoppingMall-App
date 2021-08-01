@@ -5,22 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.example.shoppingapp.R
+import com.example.shoppingapp.adapters.ShopAdapter
 import com.example.shoppingapp.adapters.ShopViewPagerAdapter
 import com.example.shoppingapp.databinding.FragmentShopBinding
-import com.example.shoppingapp.ui.fragments.ShopBookmarkFragment
-import com.example.shoppingapp.ui.fragments.ShopRankingFragment
+import com.example.shoppingapp.viewmodels.ShopRankingViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ShopFragment: Fragment() {
 
+    private lateinit var binding: FragmentShopBinding
+
     val tabLayoutArray = arrayOf("랭킹", "즐겨찾기")
 
-    private lateinit var binding: FragmentShopBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,7 +29,7 @@ class ShopFragment: Fragment() {
     ): View? {
         binding = FragmentShopBinding.inflate(LayoutInflater.from(context))
 
-        val pagerAdapter = ShopViewPagerAdapter(requireActivity())
+        val pagerAdapter = ShopViewPagerAdapter(this)
         binding.apply {
             shopViewpager.adapter = pagerAdapter
 

@@ -7,7 +7,7 @@ import com.example.shoppingapp.other.Constants.PAGE_COUNT
 import com.example.shoppingapp.ui.fragments.ShopBookmarkFragment
 import com.example.shoppingapp.ui.fragments.ShopRankingFragment
 
-class ShopViewPagerAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
+class ShopViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     var fragments : ArrayList<Fragment> = ArrayList()
 

@@ -7,7 +7,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvBook"
+            android:id="@+id/tvRanking"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="랭킹 페이지 입니다."
@@ -15,13 +15,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shop_bookmark_recyclerview"
+            android:id="@+id/shop_ranking_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvBook"
+            app:layout_constraintTop_toBottomOf="@+id/tvRanking"
             tools:listitem="@layout/item_shop" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

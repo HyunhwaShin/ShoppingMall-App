@@ -3,7 +3,7 @@ package com.example.shoppingapp.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import com.example.shoppingapp.db.StuffDatabase
+import com.example.shoppingapp.db.AppDatabase
 import com.example.shoppingapp.other.Constants.KEY_FIRST_TIME_TOGGLE
 import com.example.shoppingapp.other.Constants.KEY_NAME
 import com.example.shoppingapp.other.Constants.KEY_EMAIL
@@ -25,12 +25,15 @@ object AppModule {
         @ApplicationContext app: Context
     )= Room.databaseBuilder(
         app,
-        StuffDatabase::class.java,
+        AppDatabase::class.java,
         "stuff_db"
     ).build()
 
     @Provides
-    fun provideStuffDao(database: StuffDatabase) = database.stuffDao()
+    fun provideStuffDao(database: AppDatabase) = database.stuffDao()
+
+    @Provides
+    fun provideShopRankingDao(database: AppDatabase) = database.shopRankingDao()
 
     @Singleton
     @Provides
