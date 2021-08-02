@@ -14,7 +14,6 @@ import com.example.shoppingapp.databinding.ItemShopBinding
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.ui.activities.DetailShopActivity
 
-// Shop DB 만들면 Shop 으로 바꾸기
 class ShopAdapter: RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
     lateinit var context : Context
 

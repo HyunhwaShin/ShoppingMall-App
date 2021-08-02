@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/best"
+                android:id="@+id/btn_best"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_marginStart="25dp"
@@ -43,37 +43,37 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <ImageView
-                android:id="@+id/clothes"
+                android:id="@+id/btn_clothes"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_shirt"
-                app:layout_constraintStart_toEndOf="@+id/best"
+                app:layout_constraintStart_toEndOf="@+id/btn_best"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <ImageView
-                android:id="@+id/onepiece"
+                android:id="@+id/btn_onepiece"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_onepiece"
-                app:layout_constraintStart_toEndOf="@+id/clothes"
+                app:layout_constraintStart_toEndOf="@+id/btn_clothes"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <ImageView
-                android:id="@+id/pants"
+                android:id="@+id/btn_pants"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_pants"
-                app:layout_constraintStart_toEndOf="@+id/onepiece"
+                app:layout_constraintStart_toEndOf="@+id/btn_onepiece"
                 app:layout_constraintTop_toBottomOf="@+id/tv_category" />
 
             <ImageView
-                android:id="@+id/skirt"
+                android:id="@+id/btn_skirt"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="20dp"
@@ -81,40 +81,40 @@
                 android:src="@drawable/ic_skirt"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/best" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_best" />
 
             <ImageView
-                android:id="@+id/outer"
+                android:id="@+id/btn_outer"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_outer"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/skirt"
-                app:layout_constraintTop_toBottomOf="@+id/clothes" />
+                app:layout_constraintStart_toEndOf="@+id/btn_skirt"
+                app:layout_constraintTop_toBottomOf="@+id/btn_clothes" />
 
             <ImageView
-                android:id="@+id/shooes"
+                android:id="@+id/btn_shooes"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/ic_shooes"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/accessories"
-                app:layout_constraintTop_toBottomOf="@+id/pants" />
+                app:layout_constraintStart_toEndOf="@+id/btn_accessories"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pants" />
 
             <ImageView
-                android:id="@+id/accessories"
+                android:id="@+id/btn_accessories"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_access"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/outer"
-                app:layout_constraintTop_toBottomOf="@+id/onepiece" />
+                app:layout_constraintStart_toEndOf="@+id/btn_outer"
+                app:layout_constraintTop_toBottomOf="@+id/btn_onepiece" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
