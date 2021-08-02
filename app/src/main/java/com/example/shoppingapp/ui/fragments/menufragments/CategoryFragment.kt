@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
-import com.example.shoppingapp.adapters.HomeAdapter
+import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentCategoryBinding
 import com.example.shoppingapp.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CategoryFragment : Fragment() {
     private lateinit var binding : FragmentCategoryBinding
-    lateinit var homeAdapter: HomeAdapter
+    lateinit var stuffAdapter: StuffAdapter
     private val homeViewModel : HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -27,11 +27,11 @@ class CategoryFragment : Fragment() {
     ): View? {
         binding = FragmentCategoryBinding.inflate(LayoutInflater.from(context))
 
-        homeAdapter = HomeAdapter()
+        stuffAdapter = StuffAdapter()
         val gridLayoutManager = GridLayoutManager(requireContext(),3)
 
         binding.apply {
-            categoryGridRecyclerview.adapter = homeAdapter
+            categoryGridRecyclerview.adapter = stuffAdapter
             categoryGridRecyclerview.layoutManager = gridLayoutManager
 
             //장바구니
@@ -40,7 +40,7 @@ class CategoryFragment : Fragment() {
             }
         }
         homeViewModel.mockStuff.observe(viewLifecycleOwner,{
-            homeAdapter.submitList(it)
+            stuffAdapter.submitList(it)
         })
 
 

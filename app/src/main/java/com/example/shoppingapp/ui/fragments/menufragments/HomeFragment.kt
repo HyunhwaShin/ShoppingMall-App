@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
-import com.example.shoppingapp.adapters.HomeAdapter
+import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentHomeBinding
 import com.example.shoppingapp.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment: Fragment() {
 
     lateinit var binding: FragmentHomeBinding
-    private lateinit var homeAdapter : HomeAdapter
+    private lateinit var stuffAdapter : StuffAdapter
     private val homeViewModel : HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -27,12 +27,12 @@ class HomeFragment: Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        homeAdapter = HomeAdapter()
+        stuffAdapter = StuffAdapter()
 
         val gridLayoutManager = GridLayoutManager(requireContext(),2)
 
         binding.apply {
-            stuffGridRecyclerview.adapter = homeAdapter
+            stuffGridRecyclerview.adapter = stuffAdapter
             stuffGridRecyclerview.layoutManager = gridLayoutManager
 
             //장바구니 페이지로 이동
@@ -58,11 +58,11 @@ class HomeFragment: Fragment() {
 //            stuffAdapter.submitList(it)
 //        })
         homeViewModel.mockStuff.observe(viewLifecycleOwner,{
-            homeAdapter.submitList(it)
+            stuffAdapter.submitList(it)
         })
 
         homeViewModel.mockSearch.observe(viewLifecycleOwner,{
-            homeAdapter.submitList(it)
+            stuffAdapter.submitList(it)
         })
 
         return binding.root
