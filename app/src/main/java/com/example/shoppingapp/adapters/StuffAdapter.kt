@@ -21,7 +21,6 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
             binding.apply {
                 stuffName.text = item.stuffName
                 shopName.text = item.shopName
-                price.text = item.stuffPrice
                 btnCheckbox.isChecked = item.checkBox
                 btnFavorite.isChecked = item.likeButton
 

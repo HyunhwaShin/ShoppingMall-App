@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class StuffViewModel @Inject constructor(
         val stuffRepository: StuffRepository
 ) : ViewModel() {
 
@@ -21,6 +21,16 @@ class HomeViewModel @Inject constructor(
     private val _mockSearch: MutableLiveData<List<Stuff>> = MutableLiveData()
     val mockSearch: LiveData<List<Stuff>> = _mockSearch
 
+    //category
+    val categoryBest : LiveData<List<Stuff>> = stuffRepository.getBest().asLiveData()
+    val categoryClothes : LiveData<List<Stuff>> = stuffRepository.getClothes().asLiveData()
+    val categoryOnepiece : LiveData<List<Stuff>> = stuffRepository.getOnepiece().asLiveData()
+    val categoryPants : LiveData<List<Stuff>> = stuffRepository.getPants().asLiveData()
+    val categorySkirt : LiveData<List<Stuff>> = stuffRepository.getSkirt().asLiveData()
+    val categoryOuter : LiveData<List<Stuff>> = stuffRepository.getOuter().asLiveData()
+    val categoryShoes : LiveData<List<Stuff>> = stuffRepository.getShoes().asLiveData()
+    val categoryAccessories : LiveData<List<Stuff>> = stuffRepository.getAccessories().asLiveData()
+
     init {
         getStuffTest()
     }
@@ -28,10 +38,10 @@ class HomeViewModel @Inject constructor(
     fun getStuffTest()= viewModelScope.launch {
         delay(1000)
         val stuffList = mutableListOf<Stuff>()
-        stuffList.add(Stuff(1,"현화가게","진주목걸이","50.000",false,false))
-        stuffList.add(Stuff(2,"화가게","목걸이","5.400",false,false))
-        stuffList.add(Stuff(3,"민정가게","귀걸이","10.000",false,false))
-        stuffList.add(Stuff(4,"현","팔찌","30.000",false,false))
+        stuffList.add(Stuff(1,"현화가게","분홍색 바지","pants",5000,"M","pink","link",false,false))
+        stuffList.add(Stuff(2,"화가게","갈색셔츠","clothes",40000,"L","brown","link",false,false))
+        stuffList.add(Stuff(3,"민정가게","레이스치마","skirt",200,"M","white","link",false,false))
+        stuffList.add(Stuff(4,"현","진주목걸이","accessories",90010,"S","yellow","link",false,false))
         _mockStuff.value = stuffList
     }
 

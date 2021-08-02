@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentCategoryBinding
-import com.example.shoppingapp.viewmodels.HomeViewModel
+import com.example.shoppingapp.viewmodels.StuffViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragment : Fragment() {
     private lateinit var binding : FragmentCategoryBinding
     lateinit var stuffAdapter: StuffAdapter
-    private val homeViewModel : HomeViewModel by viewModels()
+    private val stuffViewModel : StuffViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,32 +39,50 @@ class CategoryFragment : Fragment() {
                 findNavController().navigate(R.id.action_categoryFragment_to_basketFragment)
             }
 
-//            btnBest.setOnClickListener {
-//
-//            }
-//            btnClothes.setOnClickListener {
-//
-//            }
-//            btnOnepiece.setOnClickListener {
-//
-//            }
-//            btnPants.setOnClickListener {
-//
-//            }
-//            btnSkirt.setOnClickListener {
-//
-//            }
-//            btnOuter.setOnClickListener {
-//
-//            }
-//            btnShooes.setOnClickListener {
-//
-//            }
-//            btnAccessories.setOnClickListener {
-//
-//            }
+            btnBest.setOnClickListener {
+                stuffViewModel.categoryBest.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnClothes.setOnClickListener {
+                stuffViewModel.categoryClothes.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnOnepiece.setOnClickListener {
+                stuffViewModel.categoryOnepiece.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnPants.setOnClickListener {
+                stuffViewModel.categoryPants.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnSkirt.setOnClickListener {
+                stuffViewModel.categorySkirt.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnOuter.setOnClickListener {
+                stuffViewModel.categoryOuter.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnShoes.setOnClickListener {
+                stuffViewModel.categoryShoes.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
+            btnAccessories.setOnClickListener {
+                stuffViewModel.categoryAccessories.observe(viewLifecycleOwner,{
+                    stuffAdapter.submitList(it)
+                })
+            }
         }
-        homeViewModel.mockStuff.observe(viewLifecycleOwner,{
+
+
+        stuffViewModel.mockStuff.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentHomeBinding
-import com.example.shoppingapp.viewmodels.HomeViewModel
+import com.example.shoppingapp.viewmodels.StuffViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +18,7 @@ class HomeFragment: Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     private lateinit var stuffAdapter : StuffAdapter
-    private val homeViewModel : HomeViewModel by viewModels()
+    private val stuffViewModel : StuffViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +45,7 @@ class HomeFragment: Fragment() {
                 var handled = false
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     //search event with server
-                    homeViewModel.searchTest(etSearch.text.toString())
+                    stuffViewModel.searchTest(etSearch.text.toString())
                     etSearch.setText("")
                     handled = true
                 }
@@ -57,11 +57,12 @@ class HomeFragment: Fragment() {
 //        homeViewModel.getStuff.observe(viewLifecycleOwner,{
 //            stuffAdapter.submitList(it)
 //        })
-        homeViewModel.mockStuff.observe(viewLifecycleOwner,{
+        //dummy
+        stuffViewModel.mockStuff.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        homeViewModel.mockSearch.observe(viewLifecycleOwner,{
+        stuffViewModel.mockSearch.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
