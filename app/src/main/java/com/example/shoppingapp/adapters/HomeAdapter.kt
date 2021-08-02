@@ -13,7 +13,7 @@ import com.example.shoppingapp.databinding.ItemStuffBinding
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.ui.activities.DetailStuffActivity
 
-class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
+class HomeAdapter: RecyclerView.Adapter<HomeAdapter.StuffViewHolder>() {
 
     inner class StuffViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
 

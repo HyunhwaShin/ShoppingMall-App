@@ -1,25 +1,15 @@
 package com.example.shoppingapp.ui.fragments.menufragments
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.EditorInfo
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.SearchView
-import android.widget.TextView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapp.R
-import com.example.shoppingapp.adapters.StuffAdapter
+import com.example.shoppingapp.adapters.HomeAdapter
 import com.example.shoppingapp.databinding.FragmentHomeBinding
-import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment: Fragment() {
 
     lateinit var binding: FragmentHomeBinding
-    private lateinit var stuffAdapter : StuffAdapter
+    private lateinit var homeAdapter : HomeAdapter
     private val homeViewModel : HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -37,12 +27,12 @@ class HomeFragment: Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        stuffAdapter = StuffAdapter()
+        homeAdapter = HomeAdapter()
 
         val gridLayoutManager = GridLayoutManager(requireContext(),2)
 
         binding.apply {
-            stuffGridRecyclerview.adapter = stuffAdapter
+            stuffGridRecyclerview.adapter = homeAdapter
             stuffGridRecyclerview.layoutManager = gridLayoutManager
 
             //장바구니 페이지로 이동
@@ -68,11 +58,11 @@ class HomeFragment: Fragment() {
 //            stuffAdapter.submitList(it)
 //        })
         homeViewModel.mockStuff.observe(viewLifecycleOwner,{
-            stuffAdapter.submitList(it)
+            homeAdapter.submitList(it)
         })
 
         homeViewModel.mockSearch.observe(viewLifecycleOwner,{
-            stuffAdapter.submitList(it)
+            homeAdapter.submitList(it)
         })
 
         return binding.root
