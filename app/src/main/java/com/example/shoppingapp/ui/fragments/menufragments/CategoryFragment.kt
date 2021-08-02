@@ -38,6 +38,31 @@ class CategoryFragment : Fragment() {
             btnBasket.setOnClickListener {
                 findNavController().navigate(R.id.action_categoryFragment_to_basketFragment)
             }
+
+//            btnBest.setOnClickListener {
+//
+//            }
+//            btnClothes.setOnClickListener {
+//
+//            }
+//            btnOnepiece.setOnClickListener {
+//
+//            }
+//            btnPants.setOnClickListener {
+//
+//            }
+//            btnSkirt.setOnClickListener {
+//
+//            }
+//            btnOuter.setOnClickListener {
+//
+//            }
+//            btnShooes.setOnClickListener {
+//
+//            }
+//            btnAccessories.setOnClickListener {
+//
+//            }
         }
         homeViewModel.mockStuff.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
