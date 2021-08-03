@@ -16,7 +16,7 @@ import com.example.shoppingapp.ui.activities.DetailStuffActivity
 
 class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
 
-    private var ck = 0
+    private var check = 0
 
     inner class StuffViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -28,7 +28,7 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
                 btnFavorite.isChecked = item.likeButton
 
                 itemView.setOnClickListener {
-                    if(ck ==1 ){
+                    if(check ==1 ){
                         // LikeFragment 의 편집모드일 때는 상세화면으로 이동 x
                     }else{
                         var intent = Intent(context,DetailStuffActivity::class.java).apply {
@@ -40,7 +40,7 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
                 }
             }
             //checkBox 숨김 or 보임 처리
-            if(ck ==1 ){
+            if(check ==1 ){
                 binding.btnCheckbox.visibility = View.VISIBLE
             }else{
                 binding.btnCheckbox.visibility = View.GONE
@@ -62,7 +62,7 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
 
     fun submitList(list: List<Stuff>) = differ.submitList(list)
 
-    fun updateCheckbox(n:Int){ ck = n}
+    fun updateCheckbox(n:Int){ check = n}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StuffViewHolder {
         context=parent.context

@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class LikeRepository@Inject constructor(
         val stuffDao: StuffDao
 ){
-    fun getStuffs() : Flow<List<Stuff>> {
-        return stuffDao.getAll()
+    fun getLikeStuffs() : Flow<List<Stuff>>{
+        return stuffDao.getLikeAll()
     }
 }

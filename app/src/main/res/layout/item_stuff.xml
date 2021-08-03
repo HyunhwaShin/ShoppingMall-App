@@ -38,7 +38,7 @@
                 android:textOn=""
                 app:layout_constraintBottom_toBottomOf="@+id/stuffImage"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:id="@+id/shopName"

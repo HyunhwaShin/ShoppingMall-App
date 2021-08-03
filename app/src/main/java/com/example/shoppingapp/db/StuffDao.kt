@@ -34,4 +34,9 @@ interface StuffDao{
 
     @Query("SELECT * FROM stuff WHERE stuffCategory = 'accessories'")
     fun getAccessoriesCategory() : Flow<List<Stuff>>
+
+
+    //like
+    @Query("SELECT * FROM stuff WHERE likeButton = 1")
+    fun getLikeAll() : Flow<List<Stuff>>
 }
