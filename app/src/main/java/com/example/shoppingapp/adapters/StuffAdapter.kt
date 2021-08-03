@@ -28,11 +28,15 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
                 btnFavorite.isChecked = item.likeButton
 
                 itemView.setOnClickListener {
-                    var intent = Intent(context,DetailStuffActivity::class.java).apply {
-                        //putExtra()
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    if(ck ==1 ){
+                        // LikeFragment 의 편집모드일 때는 상세화면으로 이동 x
+                    }else{
+                        var intent = Intent(context,DetailStuffActivity::class.java).apply {
+                            //putExtra()
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
-                    context.startActivity(intent)
+                        context.startActivity(intent)
+                    }
                 }
             }
             //checkBox 숨김 or 보임 처리
