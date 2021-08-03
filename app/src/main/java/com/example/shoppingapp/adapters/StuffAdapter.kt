@@ -3,6 +3,7 @@ package com.example.shoppingapp.adapters
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -14,6 +15,8 @@ import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.ui.activities.DetailStuffActivity
 
 class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
+
+    private var ck = 0
 
     inner class StuffViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -32,6 +35,12 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
                     context.startActivity(intent)
                 }
             }
+            //checkBox 숨김 or 보임 처리
+            if(ck ==1 ){
+                binding.btnCheckbox.visibility = View.VISIBLE
+            }else{
+                binding.btnCheckbox.visibility = View.GONE
+            }
         }
     }
     val diffCallback = object : DiffUtil.ItemCallback<Stuff>(){
@@ -48,6 +57,8 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
     val differ = AsyncListDiffer(this,diffCallback)
 
     fun submitList(list: List<Stuff>) = differ.submitList(list)
+
+    fun updateCheckbox(n:Int){ ck = n}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StuffViewHolder {
         context=parent.context
