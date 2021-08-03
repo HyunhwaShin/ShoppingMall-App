@@ -36,6 +36,11 @@ class LikeFragment : Fragment() {
             likeGridRecyclerview.adapter = stuffAdapter
             likeGridRecyclerview.layoutManager = gridLayoutManager
 
+            //장바구니 페이지로 이동
+            btnBasket.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_basketFragment)
+            }
+
             //편집 화면으로 변환
             btnEdit.setOnClickListener {
                 Edit(1)
