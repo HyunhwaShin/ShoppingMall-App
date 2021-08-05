@@ -23,24 +23,32 @@ class StuffViewModel @Inject constructor(
     val mockSearch: LiveData<List<Stuff>> = _mockSearch
 
     //category
-    val categoryBest : LiveData<List<Stuff>> = stuffRepository.getBest().asLiveData()
-    val categoryClothes : LiveData<List<Stuff>> = stuffRepository.getClothes().asLiveData()
-    val categoryOnepiece : LiveData<List<Stuff>> = stuffRepository.getOnepiece().asLiveData()
-    val categoryPants : LiveData<List<Stuff>> = stuffRepository.getPants().asLiveData()
-    val categorySkirt : LiveData<List<Stuff>> = stuffRepository.getSkirt().asLiveData()
-    val categoryOuter : LiveData<List<Stuff>> = stuffRepository.getOuter().asLiveData()
-    val categoryShoes : LiveData<List<Stuff>> = stuffRepository.getShoes().asLiveData()
-    val _categoryAccessories : MutableLiveData<List<Stuff>> = MutableLiveData()
+    private val _categoryBest : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryBest : LiveData<List<Stuff>> = _categoryBest
+
+    private val _categoryClothes : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryClothes : LiveData<List<Stuff>> = _categoryClothes
+
+    private val _categoryOnepiece : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryOnepiece : LiveData<List<Stuff>> = _categoryOnepiece
+
+    private val _categoryPants : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryPants : LiveData<List<Stuff>> = _categoryPants
+
+    private val _categorySkirt : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categorySkirt : LiveData<List<Stuff>> = _categorySkirt
+
+    private val _categoryOuter : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryOuter : LiveData<List<Stuff>> = _categoryOuter
+
+    private val _categoryShoes : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryShoes : LiveData<List<Stuff>> = _categoryShoes
+
+    private val _categoryAccessories : MutableLiveData<List<Stuff>> = MutableLiveData()
     val categoryAccessories : LiveData<List<Stuff>> = _categoryAccessories
 
     init {
         getStuffTest()
-    }
-
-    fun getCategoryAccessories() = viewModelScope.launch{
-        stuffRepository.getAccessories().collect {
-            _categoryAccessories.value = it
-        }
     }
 
     fun getStuffTest()= viewModelScope.launch {
@@ -53,6 +61,7 @@ class StuffViewModel @Inject constructor(
         _mockStuff.value = stuffList
     }
 
+    //home
     fun searchTest(text: String){
         if(text == ""){
             _mockSearch.value = _mockStuff.value
@@ -67,6 +76,51 @@ class StuffViewModel @Inject constructor(
                 }
                 _mockSearch.value = result
             }
+        }
+    }
+    //category
+    fun getCategoryBest() = viewModelScope.launch {
+        stuffRepository.getBest().collect {
+            _categoryBest.value = it
+        }
+    }
+    fun getCategoryClothes() = viewModelScope.launch {
+        stuffRepository.getClothes().collect {
+            _categoryClothes.value = it
+        }
+    }
+    fun getCategoryOnepiece() = viewModelScope.launch {
+        stuffRepository.getOnepiece().collect {
+            _categoryOnepiece.value = it
+        }
+    }
+    fun getCategoryPants() = viewModelScope.launch {
+        stuffRepository.getPants().collect {
+            _categoryPants.value = it
+        }
+    }
+
+    fun getCategorySkirt() = viewModelScope.launch {
+        stuffRepository.getSkirt().collect {
+            _categorySkirt.value = it
+        }
+    }
+
+    fun getCategoryOuter() = viewModelScope.launch {
+        stuffRepository.getOuter().collect {
+            _categoryOuter.value =it
+        }
+    }
+
+    fun getCategoryShoes() = viewModelScope.launch {
+        stuffRepository.getShoes().collect {
+            _categoryShoes.value =it
+        }
+    }
+
+    fun getCategoryAccessories() = viewModelScope.launch{
+        stuffRepository.getAccessories().collect {
+            _categoryAccessories.value = it
         }
     }
 }

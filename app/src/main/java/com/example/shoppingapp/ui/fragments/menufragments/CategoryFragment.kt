@@ -40,47 +40,30 @@ class CategoryFragment : Fragment() {
             }
 
             btnBest.setOnClickListener {
-                stuffViewModel.categoryBest.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryBest()
             }
             btnClothes.setOnClickListener {
-                stuffViewModel.categoryClothes.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryClothes()
             }
             btnOnepiece.setOnClickListener {
-                stuffViewModel.categoryOnepiece.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryOnepiece()
             }
             btnPants.setOnClickListener {
-                stuffViewModel.categoryPants.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryPants()
             }
             btnSkirt.setOnClickListener {
-                stuffViewModel.categorySkirt.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategorySkirt()
             }
             btnOuter.setOnClickListener {
-                stuffViewModel.categoryOuter.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryOuter()
             }
             btnShoes.setOnClickListener {
-                stuffViewModel.categoryShoes.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryShoes()
             }
-
             btnAccessories.setOnClickListener {
                 stuffViewModel.getCategoryAccessories()
             }
-
         }
-
         return binding.root
     }
 
@@ -91,6 +74,33 @@ class CategoryFragment : Fragment() {
 
     fun setObserver(){
         stuffViewModel.mockStuff.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+        stuffViewModel.categoryBest.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.categoryClothes.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.categoryOnepiece.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.categoryPants.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.categorySkirt.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.categoryOuter.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.categoryShoes.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
