@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentLikeBinding
-import com.example.shoppingapp.db.Stuff
+import com.example.shoppingapp.ui.fragments.AlertDialog
 import com.example.shoppingapp.viewmodels.LikeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,16 +50,28 @@ class LikeFragment : Fragment() {
                 Edit(0)
             }
 
-
         }
+        var id = requireActivity().intent.getLongExtra("id",0L)
+        likeViewModel.getLikeStuff(id)
+
         //likebutton 누른 찜한 아이템들만 표시
-        likeViewModel.getLikeStuff.observe(viewLifecycleOwner,{
-            stuffAdapter.submitList(it)
-        })
+        likeViewModel.likeStuff.observe(viewLifecycleOwner) {
+            //stuffAdapter.submitList(it)
+        }
 
         //dummy
         likeViewModel.mockStuff.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
+        })
+
+        likeViewModel.isDelete.observe(viewLifecycleOwner,{
+            if (it){
+                // == finish()
+                activity?.supportFragmentManager
+                        ?.beginTransaction()
+                        ?.remove(this)
+                        ?.commit()
+            }
         })
 
         return binding.root
@@ -74,18 +86,25 @@ class LikeFragment : Fragment() {
             binding.apply {
                 btnEdit.visibility = View.GONE
                 btnBasket.visibility = View.GONE
-
                 btnDelete.visibility = View.VISIBLE
                 btnEditCancel.visibility = View.VISIBLE
+
+                // 삭제
+                btnDelete.setOnClickListener {
+                    AlertDialog().show(parentFragmentManager,"dialog")
+                }
+
             }
         }
         else{ //off
             binding.apply {
                 btnEdit.visibility = View.VISIBLE
                 btnBasket.visibility = View.VISIBLE
-
                 btnDelete.visibility = View.GONE
                 btnEditCancel.visibility = View.GONE
+
+
+
             }
         }
     }

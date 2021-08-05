@@ -1,6 +1,7 @@
 package com.example.shoppingapp.db
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
@@ -38,5 +39,9 @@ interface StuffDao{
 
     //like
     @Query("SELECT * FROM stuff WHERE likeButton = 1")
-    fun getLikeAll() : Flow<List<Stuff>>
+    fun getLikeAll(id : Long) : Flow<List<Stuff>>
+
+    @Delete
+    fun delete(stuff: Stuff)
+
 }
