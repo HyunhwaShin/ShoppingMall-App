@@ -74,19 +74,28 @@ class CategoryFragment : Fragment() {
                     stuffAdapter.submitList(it)
                 })
             }
+
             btnAccessories.setOnClickListener {
-                stuffViewModel.categoryAccessories.observe(viewLifecycleOwner,{
-                    stuffAdapter.submitList(it)
-                })
+                stuffViewModel.getCategoryAccessories()
             }
+
         }
 
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setObserver()
+    }
+
+    fun setObserver(){
         stuffViewModel.mockStuff.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-
-        return binding.root
+        stuffViewModel.categoryAccessories.observe(viewLifecycleOwner,{
+            stuffAdapter.submitList(it)
+        })
     }
 }

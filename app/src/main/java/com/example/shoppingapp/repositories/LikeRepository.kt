@@ -11,11 +11,13 @@ import javax.inject.Singleton
 class LikeRepository@Inject constructor(
         val stuffDao: StuffDao
 ){
-    fun getLikeStuffs(id: Long): Flow<List<Stuff>>{
-        return stuffDao.getLikeAll(id)
+    fun getLikeStuffs(): Flow<List<Stuff>>{
+        return stuffDao.getLikeAll()
     }
 
-    fun delete(stuff: Stuff){
+
+
+    fun delete(stuff: List<Stuff>){
         try{
             val thread = Thread(Runnable { stuffDao.delete(stuff) })
             thread.start()

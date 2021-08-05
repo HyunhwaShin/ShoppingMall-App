@@ -1,11 +1,9 @@
 package com.example.shoppingapp.adapters
-
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -16,23 +14,39 @@ import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.ui.activities.DetailStuffActivity
 import com.example.shoppingapp.viewmodels.LikeViewModel
 
-class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
+class LikeAdapter(private val viewModel: LikeViewModel): RecyclerView.Adapter<LikeAdapter.LikeViewHolder>() {
 
-    inner class StuffViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
+    private var check = 0
+
+    inner class LikeViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item : Stuff){
             binding.apply {
                 stuffName.text = item.stuffName
                 shopName.text = item.shopName
                 btnCheckbox.isChecked = item.checkBox
-                btnFavorite.isChecked = item.likeButton
+
+                btnCheckbox.setOnCheckedChangeListener { btn, isCheck ->
+                    viewModel.toggleDeleteItemList(isCheck,item)
+                }
 
                 itemView.setOnClickListener {
+                    if(check ==1 ){
+                        // LikeFragment 의 편집모드일 때는 상세화면으로 이동 x
+                    }else{
                         var intent = Intent(context,DetailStuffActivity::class.java).apply {
+                            //putExtra()
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         }
                         context.startActivity(intent)
                     }
+                }
+            }
+            //checkBox 숨김 or 보임 처리
+            if(check ==1 ){
+                binding.btnCheckbox.visibility = View.VISIBLE
+            }else{
+                binding.btnCheckbox.visibility = View.GONE
             }
         }
     }
@@ -51,10 +65,11 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
 
     fun submitList(list: List<Stuff>) = differ.submitList(list)
 
+    fun updateCheckbox(n:Int){ check = n}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StuffViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeViewHolder {
         context=parent.context
-        return StuffViewHolder(
+        return LikeViewHolder(
                 DataBindingUtil.inflate(
                         LayoutInflater.from(parent.context),
                         R.layout.item_stuff,
@@ -64,7 +79,7 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
         )
     }
 
-    override fun onBindViewHolder(holder: StuffViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LikeViewHolder, position: Int) {
         val stuff = differ.currentList[position]
         holder.bind(stuff)
     }

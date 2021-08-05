@@ -5,6 +5,7 @@ import com.example.shoppingapp.repositories.StuffRepository
 import com.example.shoppingapp.db.Stuff
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,10 +30,17 @@ class StuffViewModel @Inject constructor(
     val categorySkirt : LiveData<List<Stuff>> = stuffRepository.getSkirt().asLiveData()
     val categoryOuter : LiveData<List<Stuff>> = stuffRepository.getOuter().asLiveData()
     val categoryShoes : LiveData<List<Stuff>> = stuffRepository.getShoes().asLiveData()
-    val categoryAccessories : LiveData<List<Stuff>> = stuffRepository.getAccessories().asLiveData()
+    val _categoryAccessories : MutableLiveData<List<Stuff>> = MutableLiveData()
+    val categoryAccessories : LiveData<List<Stuff>> = _categoryAccessories
 
     init {
         getStuffTest()
+    }
+
+    fun getCategoryAccessories() = viewModelScope.launch{
+        stuffRepository.getAccessories().collect {
+            _categoryAccessories.value = it
+        }
     }
 
     fun getStuffTest()= viewModelScope.launch {
