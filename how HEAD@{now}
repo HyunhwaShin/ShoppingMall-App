@@ -1,0 +1,256 @@
+[33mcommit 81c9bdc94fd779be25d25d05ef4c394c975195c9[m[33m ([m[1;36mHEAD -> [m[1;32mfeat/like[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Aug 5 18:13:04 2021 +0900
+
+    feat[HS-22] 편집 시 삭제 기능 제작 미완성
+    
+    만드는 중!
+
+[33mcommit ed55bb5022ad01fb1da35ed7c3d444fe8ba5e563[m[33m ([m[1;31morigin/feat/like[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Tue Aug 3 19:44:18 2021 +0900
+
+    feat[HS-62] 좋아요(찜)한 아이템만 표시
+    
+    'likebutton =1' 로 좋아요한 아이템들만 likeGirdRecyclerview 에 표시
+
+[33mcommit ee0f8e00d52afbda456b715cd7ee3945c80a81b7[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Tue Aug 3 19:01:47 2021 +0900
+
+    feat[HS-25] 편집모드일 때를 제외하고 아이템 클릭시 상세페이지로 이동
+    
+    StuffAdapter 에서 if문을 이용하여 'ck==1' 일 때(= 편집모드)를 제외하고만 item 클릭시 상세페이지로 이동하도록 구현
+
+[33mcommit 7be31118255a24d87642ac37d8b7d5727f9ea933[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Tue Aug 3 18:54:38 2021 +0900
+
+    feat[HS-20] 장바구니 페이지로 이동
+    
+    navigation 이용
+
+[33mcommit 6e2cc59ca4fe2039c9b5446586055d3e66a63ddf[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Tue Aug 3 18:53:20 2021 +0900
+
+    feat[HS-21] 편집 기능 활성화
+    
+    편집버튼을 누르면 체크박스가 GONE->VISIBLE 로 바뀌며 편집버튼(btn_edit)과 장바구니버튼(btn_basket)이 안보이고 삭제버튼(btn_delete)과 편집취소버튼(btn_edit_cancel)이 보임
+
+[33mcommit 259a8c34752599a8d30636989e912af190bc681f[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Tue Aug 3 16:45:52 2021 +0900
+
+    feat[ui] UI 제작
+    
+    fragment_like.xml 제작 및 home,shop,category 화면의 장바구니 아이콘 사이즈 조절
+
+[33mcommit ae36e79044827cbd2c057c88b6e45c6cd488742a[m[33m ([m[1;31morigin/feat/category3[m[33m, [m[1;32mfeat/category3[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 17:31:01 2021 +0900
+
+    feat[HS-17] 카테고리별 뷰 출력
+    
+    Stuff 의 data class, adapter, repository, viewmodel 을 이용해서 카테고리 뷰 출력
+
+[33mcommit 3bf2a04ca674bef1f04d37465c51cf229bc7f6a4[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 17:02:36 2021 +0900
+
+    feat[db] Stuff data class 수정
+    
+    Stuff data class table 추가
+
+[33mcommit 6b3847ce975c1ca874a3d356a36ee03bd4db9edd[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 15:26:30 2021 +0900
+
+    feat[HS-24] 아이템 클릭시 상세페이지로 이동
+    
+    기존에 있던 StuffAdapter.kt 를 이용해 CategoryFragment.kt 에도 적용
+
+[33mcommit c46ba168446487b4276c06d50891cede2c050013[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 15:24:25 2021 +0900
+
+    feat[HS-16] 장바구니 페이지로 이동
+    
+    CategoryFragment.kt 에서 BasketFragment로 이동
+
+[33mcommit 492ca95f185d22bc50296162053ee99597547dcb[m[33m ([m[1;32mfeat/shop[m[33m)[m
+Merge: d35d5d0 d47679b
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 14:37:48 2021 +0900
+
+    merge conflicts resolve
+
+[33mcommit d47679bbc5112e650534ea418d1de99db510bb27[m[33m ([m[1;31morigin/feat/category2[m[33m, [m[1;31morigin/feat/category[m[33m, [m[1;32mfeat/category2[m[33m, [m[1;32mfeat/category[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 14:23:18 2021 +0900
+
+    refactoring[HS-15] UI 제작 tnwjd
+    
+    xml 의 id 명 수정
+
+[33mcommit abc5716f16ba23925348e0ba9c0ae821b547beb5[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 14:11:51 2021 +0900
+
+    feat[HS-15] UI 제작
+    
+    category fragment 의 ui 제작
+
+[33mcommit d35d5d0f214c89d2f918d7d8a284706fb46a84a0[m[33m ([m[1;31morigin/feat/shop[m[33m, [m[1;32mcheckout[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Aug 2 00:04:51 2021 +0900
+
+    feat[HS-12] 즐겨찾기 기능 제작
+    
+    bookmarkButton = 'true' 인 쇼핑몰들만 ShopBookmarkFragment.kt 에 나타나도록 구현
+
+[33mcommit 6b5b5c2abc43be164fbe4ace172da56bcceaa388[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Sun Aug 1 22:57:01 2021 +0900
+
+    refactoring[HS-13] 아이템 클릭시 가게 상세페이지로 이동
+    
+    Database 및 구조 전체 변경
+
+[33mcommit 739f2d83d45ec9e154feb454a5ca899626653583[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Fri Jul 30 00:51:59 2021 +0900
+
+    feat[HS-13] 아이템 클릭시 가게 상세페이지로 이동
+    
+    ShopAdapter.kt 안에 itemView.setOnClickListener 로 구현
+
+[33mcommit 33269cfedca14af98c5a5237cc01cf4be95b3af4[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Fri Jul 30 00:38:44 2021 +0900
+
+    feat[HS-9] 장바구니 페이지로 이동
+    
+    navigate 를 이용해 fragment 간 이동
+
+[33mcommit 680979c601528dd93f0f549a92205903dd4c38dc[m[33m ([m[1;31morigin/HS-10_shop_layout[m[33m, [m[1;32mHS-10_shop_layout[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 21:10:22 2021 +0900
+
+    feat[HS-11] 탭바 기능 제작
+    
+    viewpager2 와 tablayout 으로 탭바 기능 제작
+
+[33mcommit b44fc1df3ad287462489789cb11adfca5af8eafe[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 21:09:17 2021 +0900
+
+    refactoring[HS-10] UI 제작 수정
+    
+    item_shop.xml 과 fragment_shop.xml 의 ui 수정, fragment_shopbookmark.xml, fragment_shopranking.xml 생성
+
+[33mcommit f6bde89b09eaeb9a22fd55b5dc7b35502921edf0[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 19:30:04 2021 +0900
+
+    ui[HS-10] UI 제작
+    
+    item_shop.xml 과 fragment_shop.xml 의 ui 제작
+
+[33mcommit 1712e5ba9496f2bce57901e4b3d89210fb39c78b[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 18:45:49 2021 +0900
+
+    Modify[HS-5] UI 제작 수정
+    
+    icon 및 text 사이즈 수정
+
+[33mcommit a54272848c2d4934313175af5e72138c84b31dd0[m[33m ([m[1;31morigin/develop[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 18:34:04 2021 +0900
+
+    Refactoring[HS-4] 검색 기능 리팩토링
+    
+    부족했던 검색기능 보충해서 제작 완료
+
+[33mcommit 8b2ae3a51b8ad28e3cc2c70b0448cc03d8f51b36[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 00:47:21 2021 +0900
+
+    feat[HS-5] UI 제작
+    
+    homeFragment 의 ui 제작. 위쪽엔 검색 기능과 장바구니 이동 기능이 있고 밑엔 gird 형식의 recyclerView 가 있다.
+
+[33mcommit 25ab9e3d91c0702104afdb1ac022874f263f7494[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 29 00:43:05 2021 +0900
+
+    feat[HS-4] 검색 기능
+    
+    editText 의 android:imeOptions="actionSearch" 로 editText 키보드 검색 기능 제작
+
+[33mcommit 029663339cbb81561aa06e07615e164152f70d0b[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Wed Jul 28 23:33:33 2021 +0900
+
+    feat[HS-60] 사용자 정보 가져오기
+    
+    SharedPreferences 로 writePersonalDataToSharedPref 를 이용하여 사용자 정보 가져오기
+
+[33mcommit a1112805a43d5b5655f39c2bff6ebc230fcbd5f9[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Wed Jul 28 23:29:01 2021 +0900
+
+    feat[HS-58] 처음 실행할 때만 작동되는 기능 제작
+    
+    isFirstAppOpen : Boolean 으로 처음 실행 판별
+
+[33mcommit 72c3282fb53ca63015e69defa3f6ee873906e6c5[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Wed Jul 28 22:55:16 2021 +0900
+
+    feat[HS-48] UI 제작 수정_1
+    
+    UserSettingFragment.kt 의 xml 제작
+
+[33mcommit c9b52e88f5951a2db94eb25e8ed6daacfaa6a475[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Wed Jul 28 22:52:56 2021 +0900
+
+    feat[HS-48] UI 제작
+    
+    UserSettingFragment.kt 의 xml 제작
+
+[33mcommit be3e545b11281d2d9a118508b4933c1108b34bbb[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Tue Jul 27 22:01:55 2021 +0900
+
+    feat[HS-7] 아이템 클릭시 상세페이지로 이동
+    
+    StuffAdapter.kt 의 StuffViewHolder 안의 itemView.setOnClickListener 로 화면 이동
+
+[33mcommit 8c8e57648b2be3b399e051c50b30a36bff9cf92d[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Mon Jul 26 22:49:44 2021 +0900
+
+    feat[HS-6] 장바구니 페이지로 이동
+    
+    nav_graph.xml 를 이용해 fragment 간 이동 구현
+
+[33mcommit 9f1b3f0323f510028dac5a55040cf184ab17dd4c[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 22 04:16:02 2021 +0900
+
+    Bottom_menu and Bottom_navigation
+
+[33mcommit f9d88f17e56db6b4f650fec8ac8a199ae0db44b2[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 22 02:13:33 2021 +0900
+
+    item_stuff 와 databinding
+
+[33mcommit 612b2eddf2b541e299c95902ba33aaff025a5699[m[33m ([m[1;32mshop[m[33m)[m
+Author: hwa <HyunhwaShin@gmail.com>
+Date:   Thu Jul 22 02:12:16 2021 +0900
+
+    item_stuff 와 databinding

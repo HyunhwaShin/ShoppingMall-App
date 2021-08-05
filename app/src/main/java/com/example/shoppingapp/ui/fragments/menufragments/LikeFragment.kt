@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.LikeAdapter
-import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentLikeBinding
 import com.example.shoppingapp.ui.fragments.AlertDialog
 import com.example.shoppingapp.viewmodels.LikeViewModel
@@ -39,7 +38,7 @@ class LikeFragment : Fragment() {
 
             //장바구니 페이지로 이동
             btnBasket.setOnClickListener {
-                findNavController().navigate(R.id.action_homeFragment_to_basketFragment)
+                findNavController().navigate(R.id.action_likeFragment_to_basketFragment)
             }
 
             //편집 화면으로 변환
