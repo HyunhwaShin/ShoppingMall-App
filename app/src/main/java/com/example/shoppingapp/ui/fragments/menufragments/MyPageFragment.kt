@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.DeliveryAdapter
 import com.example.shoppingapp.databinding.FragmentMypageBinding
 import com.example.shoppingapp.other.Constants.KEY_EMAIL
@@ -37,6 +39,11 @@ class MyPageFragment: Fragment() {
         binding.apply {
             mypageRecyclerview.adapter = deliveryAdapter
             mypageRecyclerview.layoutManager = LinearLayoutManager(context)
+
+            //장바구니 페이지로 이동
+            btnBasket.setOnClickListener {
+                findNavController().navigate(R.id.action_myPageFragment_to_basketFragment)
+            }
         }
         loadFieldsFromSharedPref()
 
