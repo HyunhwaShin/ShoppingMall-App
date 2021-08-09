@@ -7,13 +7,14 @@ import androidx.room.RoomDatabase
 import com.example.shoppingapp.other.Constants.DATABASE_NAME
 
 @Database(
-        entities = [Stuff::class , ShopRanking::class],
+        entities = [Stuff::class , ShopRanking::class, Delivery::class],
         version = 1,
         exportSchema = false
 )
 abstract class AppDatabase :RoomDatabase(){
     abstract fun stuffDao() : StuffDao
     abstract fun shopRankingDao() : ShopRankingDao
+    abstract fun deliveryDao() : DeliveryDao
 
     companion object{
         @Volatile private var instance : AppDatabase? = null
@@ -31,17 +32,5 @@ abstract class AppDatabase :RoomDatabase(){
                 )
                 .build()
         }
-
-//        fun getInstance(context: Context) : AppDatabase?{
-//            if(INSTANCE == null){
-//                synchronized(AppDatabase::class){
-//                    INSTANCE = Room.databaseBuilder(context.applicationContext,
-//                            AppDatabase::class.java, "Stuff")
-//                            .fallbackToDestructiveMigration()
-//                            .build()
-//                }
-//            }
-//            return INSTANCE
-//        }
     }
 }
