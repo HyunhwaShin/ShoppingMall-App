@@ -1,7 +1,6 @@
 package com.example.shoppingapp.ui.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.shoppingapp.R
@@ -15,5 +14,6 @@ class DetailStuffActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detailstuff)
+
     }
 }

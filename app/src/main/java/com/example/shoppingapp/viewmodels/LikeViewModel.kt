@@ -26,17 +26,17 @@ class LikeViewModel @Inject constructor(
     val deleteItemList: LiveData<MutableList<Stuff>> = _deleteItemList
 
     init {
-        getStuffTest()
+        //getStuffTest()
     }
 
-    fun getStuffTest()= viewModelScope.launch {
-        val stuffList = mutableListOf<Stuff>()
-        stuffList.add(Stuff(1,"현화가게","분홍색 바지","pants",5000,"M","pink","link",false,false))
-        stuffList.add(Stuff(2,"화가게","갈색셔츠","clothes",40000,"L","brown","link",false,false))
-        stuffList.add(Stuff(3,"민정가게","레이스치마","skirt",200,"M","white","link",false,false))
-        stuffList.add(Stuff(4,"현","진주목걸이","accessories",90010,"S","yellow","link",false,false))
-        _mockStuff.value = stuffList
-    }
+//    fun getStuffTest()= viewModelScope.launch {
+//        val stuffList = mutableListOf<Stuff>()
+//        stuffList.add(Stuff(1,"현화가게","분홍색 바지","pants",5000,"M","pink","link",false,false))
+//        stuffList.add(Stuff(2,"화가게","갈색셔츠","clothes",40000,"L","brown","link",false,false))
+//        stuffList.add(Stuff(3,"민정가게","레이스치마","skirt",200,"M","white","link",false,false))
+//        stuffList.add(Stuff(4,"현","진주목걸이","accessories",90010,"S","yellow","link",false,false))
+//        _mockStuff.value = stuffList
+//    }
     fun getLikeStuff() = viewModelScope.launch {
         likeRepository.getLikeStuffs().collect {
             //_likeStuff.value = it

@@ -36,6 +36,7 @@
                 android:text=""
                 android:textOff=""
                 android:textOn=""
+                android:layout_marginEnd="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/stuffImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginBottom="15dp" />
@@ -43,8 +44,8 @@
             <TextView
                 android:id="@+id/shopName"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:textSize="10sp"
+                android:layout_height="20dp"
+                android:textSize="12sp"
                 android:text="shopName ex)현화의 목걸이 가게"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stuffImage"
@@ -53,9 +54,9 @@
             <TextView
                 android:id="@+id/stuffName"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:textStyle="bold"
-                android:textSize="10sp"
+                android:textSize="13sp"
                 android:text="stuffName ex)반짝반짝 진주귀걸이"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/shopName"
@@ -65,8 +66,9 @@
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:textSize="10sp"
-                android:text="price ex)50,000"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:text="stuffPrice ex)5000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stuffName"
                 android:layout_marginLeft="5dp"/>

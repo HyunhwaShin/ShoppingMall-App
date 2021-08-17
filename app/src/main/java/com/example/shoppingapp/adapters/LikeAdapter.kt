@@ -22,8 +22,8 @@ class LikeAdapter(private val viewModel: LikeViewModel): RecyclerView.Adapter<Li
 
         fun bind(item : Stuff){
             binding.apply {
-                stuffName.text = item.stuffName
-                shopName.text = item.shopName
+                stuffName.text = item.product_name
+                shopName.text = item.shop_name
                 btnCheckbox.isChecked = item.checkBox
 
                 btnCheckbox.setOnCheckedChangeListener { btn, isCheck ->
@@ -52,7 +52,7 @@ class LikeAdapter(private val viewModel: LikeViewModel): RecyclerView.Adapter<Li
     }
     val diffCallback = object : DiffUtil.ItemCallback<Stuff>(){
         override fun areItemsTheSame(oldItem: Stuff, newItem: Stuff): Boolean {
-            return oldItem.stuffId == newItem.stuffId
+            return oldItem.uid == newItem.uid
         }
 
         override fun areContentsTheSame(oldItem: Stuff, newItem: Stuff): Boolean {

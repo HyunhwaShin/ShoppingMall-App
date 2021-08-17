@@ -73,9 +73,7 @@ class CategoryFragment : Fragment() {
     }
 
     fun setObserver(){
-        stuffViewModel.mockStuff.observe(viewLifecycleOwner,{
-            stuffAdapter.submitList(it)
-        })
+
         stuffViewModel.categoryBest.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })

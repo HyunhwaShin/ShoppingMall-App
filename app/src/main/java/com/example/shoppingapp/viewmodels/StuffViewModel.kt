@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import com.example.shoppingapp.repositories.StuffRepository
 import com.example.shoppingapp.db.Stuff
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,13 +13,13 @@ class StuffViewModel @Inject constructor(
         val stuffRepository: StuffRepository
 ) : ViewModel() {
 
-    val getStuff : LiveData<List<Stuff>> = stuffRepository.getStuffs().asLiveData()
-    //dummy
-    private val _mockStuff : MutableLiveData<List<Stuff>> = MutableLiveData()
-    val mockStuff: LiveData<List<Stuff>> = _mockStuff
+    //home
+    private val _getStuffAPI : MutableLiveData<List<Stuff>> = MutableLiveData()
+    var getStuffAPI : LiveData<List<Stuff>> = _getStuffAPI
 
-    private val _mockSearch: MutableLiveData<List<Stuff>> = MutableLiveData()
-    val mockSearch: LiveData<List<Stuff>> = _mockSearch
+    //search
+    private val _search: MutableLiveData<List<Stuff>> = MutableLiveData()
+    val search: LiveData<List<Stuff>> = _search
 
     //category
     private val _categoryBest : MutableLiveData<List<Stuff>> = MutableLiveData()
@@ -48,33 +47,27 @@ class StuffViewModel @Inject constructor(
     val categoryAccessories : LiveData<List<Stuff>> = _categoryAccessories
 
     init {
-        getStuffTest()
+        getAllStuff()
     }
 
-    fun getStuffTest()= viewModelScope.launch {
-        delay(1000)
-        val stuffList = mutableListOf<Stuff>()
-        stuffList.add(Stuff(1,"현화가게","분홍색 바지","pants",5000,"M","pink","link",false,false))
-        stuffList.add(Stuff(2,"화가게","갈색셔츠","clothes",40000,"L","brown","link",false,false))
-        stuffList.add(Stuff(3,"민정가게","레이스치마","skirt",200,"M","white","link",false,false))
-        stuffList.add(Stuff(4,"현","진주목걸이","accessories",90010,"S","yellow","link",false,false))
-        _mockStuff.value = stuffList
+    fun getAllStuff()=viewModelScope.launch{
+        _getStuffAPI.value = stuffRepository.getStuffAPI()
     }
 
     //home
     fun searchTest(text: String){
         if(text == ""){
-            _mockSearch.value = _mockStuff.value
+            _search.value = _getStuffAPI.value
         }else{
-            val stuffList = _mockStuff.value
+            val stuffList = _getStuffAPI.value
             val result = mutableListOf<Stuff>()
             stuffList?.let { list ->
                 for(item in list){
-                    if(item.shopName.contains(text)){
+                    if(item.shop_name.contains(text)|| item.product_name.contains(text)){
                         result.add(item)
                     }
                 }
-                _mockSearch.value = result
+                _search.value = result
             }
         }
     }

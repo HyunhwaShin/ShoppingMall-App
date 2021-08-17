@@ -11,4 +11,7 @@ object Constants {
 
     const val PAGE_COUNT = 2
 
+    const val API_KEY =""
+    const val BASE_URL = "http://15.165.14.74:8080"
+
 }

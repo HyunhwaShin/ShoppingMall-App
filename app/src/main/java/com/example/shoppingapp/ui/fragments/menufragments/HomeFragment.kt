@@ -54,15 +54,11 @@ class HomeFragment: Fragment() {
 
         }
 
-//        homeViewModel.getStuff.observe(viewLifecycleOwner,{
-//            stuffAdapter.submitList(it)
-//        })
-        //dummy
-        stuffViewModel.mockStuff.observe(viewLifecycleOwner,{
+        stuffViewModel.search.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.mockSearch.observe(viewLifecycleOwner,{
+        stuffViewModel.getStuffAPI.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
