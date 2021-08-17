@@ -31,10 +31,10 @@ class StuffAdapter: RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
                 item.product_price.toString().also { price.text = it }
                 btnCheckbox.isChecked = item.checkBox
                 btnFavorite.isChecked = item.isLike
-                CoroutineScope(Dispatchers.IO).launch {
+                var launch = CoroutineScope(Dispatchers.IO).launch {
                     val inputStream = URL(item.product_img).openStream()
                     val bitmap = BitmapFactory.decodeStream(inputStream)
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         Glide.with(binding.root)
                             .load(bitmap)
                             .into(stuffImage)

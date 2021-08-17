@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.StuffAdapter
 import com.example.shoppingapp.databinding.FragmentCategoryBinding
+import com.example.shoppingapp.viewmodels.CategoryViewModel
 import com.example.shoppingapp.viewmodels.StuffViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class CategoryFragment : Fragment() {
     private lateinit var binding : FragmentCategoryBinding
     lateinit var stuffAdapter: StuffAdapter
-    private val stuffViewModel : StuffViewModel by viewModels()
+    private val categoryViewModel : CategoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,28 +41,28 @@ class CategoryFragment : Fragment() {
             }
 
             btnBest.setOnClickListener {
-                stuffViewModel.getCategoryBest()
+                categoryViewModel.getCategoryBest()
             }
             btnClothes.setOnClickListener {
-                stuffViewModel.getCategoryClothes()
+                categoryViewModel.getCategoryClothes()
             }
             btnOnepiece.setOnClickListener {
-                stuffViewModel.getCategoryOnepiece()
+                categoryViewModel.getCategoryOnepiece()
             }
             btnPants.setOnClickListener {
-                stuffViewModel.getCategoryPants()
+                categoryViewModel.getCategoryPants()
             }
             btnSkirt.setOnClickListener {
-                stuffViewModel.getCategorySkirt()
+                categoryViewModel.getCategorySkirt()
             }
             btnOuter.setOnClickListener {
-                stuffViewModel.getCategoryOuter()
+                categoryViewModel.getCategoryOuter()
             }
             btnShoes.setOnClickListener {
-                stuffViewModel.getCategoryShoes()
+                categoryViewModel.getCategoryShoes()
             }
             btnAccessories.setOnClickListener {
-                stuffViewModel.getCategoryAccessories()
+                categoryViewModel.getCategoryAccessories()
             }
         }
         return binding.root
@@ -69,40 +70,41 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setObserver()
     }
 
     fun setObserver(){
 
-        stuffViewModel.categoryBest.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryBest.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categoryClothes.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryClothes.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categoryOnepiece.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryOnepiece.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categoryPants.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryPants.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categorySkirt.observe(viewLifecycleOwner,{
+        categoryViewModel.categorySkirt.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categoryOuter.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryOuter.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categoryShoes.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryShoes.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.categoryAccessories.observe(viewLifecycleOwner,{
+        categoryViewModel.categoryAccessories.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
         })
     }
