@@ -8,13 +8,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LikeRepository@Inject constructor(
+class LikeRepository @Inject constructor(
         val stuffDao: StuffDao
 ){
     fun getLikeStuffs(): Flow<List<Stuff>>{
         return stuffDao.getLikeAll()
     }
-
 
 
     fun delete(stuff: List<Stuff>){

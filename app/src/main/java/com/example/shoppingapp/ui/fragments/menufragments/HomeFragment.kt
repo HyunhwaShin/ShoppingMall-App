@@ -27,7 +27,7 @@ class HomeFragment: Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        stuffAdapter = StuffAdapter()
+        stuffAdapter = StuffAdapter(stuffViewModel)
 
         val gridLayoutManager = GridLayoutManager(requireContext(),2)
 

@@ -38,7 +38,7 @@ interface StuffDao{
 
 
     //like
-    @Query("SELECT * FROM stuff WHERE likeButton = 1")
+    @Query("SELECT * FROM stuff WHERE likeButton =1")
     fun getLikeAll() : Flow<List<Stuff>>
 
     @Delete

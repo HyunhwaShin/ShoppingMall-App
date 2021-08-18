@@ -54,12 +54,7 @@ class LikeFragment : Fragment() {
 
 
         //likebutton 누른 찜한 아이템들만 표시
-//        likeViewModel.likeStuff.observe(viewLifecycleOwner) {
-//            //likeAdapter.submitList(it)
-//        }
-
-        //dummy
-        likeViewModel.mockStuff.observe(viewLifecycleOwner,{
+        likeViewModel.getLikeStuff.observe(viewLifecycleOwner, {
             likeAdapter.submitList(it)
         })
 

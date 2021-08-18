@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import com.example.shoppingapp.repositories.StuffRepository
 import com.example.shoppingapp.db.Stuff
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,6 +17,9 @@ class StuffViewModel @Inject constructor(
 
     private val _search: MutableLiveData<List<Stuff>> = MutableLiveData()
     val search: LiveData<List<Stuff>> = _search
+
+    private val _likeItemList :  MutableLiveData<MutableList<Stuff>> = MutableLiveData(mutableListOf())
+    val likeItemList : LiveData<MutableList<Stuff>> = _likeItemList
 
 
     init {
@@ -44,4 +46,13 @@ class StuffViewModel @Inject constructor(
             }
         }
     }
+
+    fun toggleLikeItemList(isCheck: Boolean, stuff: Stuff){
+        val list = _likeItemList.value!!
+        if(isCheck){
+            list.add(stuff)
+            _likeItemList.value = list
+        }
+    }
+
 }
