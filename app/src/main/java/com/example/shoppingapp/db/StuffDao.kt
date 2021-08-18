@@ -44,4 +44,8 @@ interface StuffDao{
     @Delete
     fun delete(stuff: List<Stuff>)
 
+    //detailStuff
+//    @Query("SELECT stuffLink FROM stuff")
+//    fun getStuffLink() : Flow<List<Stuff>>
+
 }
