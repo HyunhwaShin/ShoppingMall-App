@@ -1,8 +1,6 @@
 package com.example.shoppingapp.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -10,6 +8,17 @@ interface StuffDao{
     @Query("SELECT * FROM stuff")
     fun getAll() : Flow<List<Stuff>>
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insert(item : List<Stuff>)
+
+    @Query("UPDATE stuff SET likeButton = 1 WHERE uid = :uid")
+    fun update(uid : String)
+
+    @Query("UPDATE stuff SET likeButton = 0 WHERE uid = :uid")
+    fun updateCancel(uid: String)
+
+    @Query("UPDATE stuff SET likeButton = 0 WHERE uid in (:uid)")
+    fun likeEdit(uid : List<String>)
 
     //category
     @Query("SELECT * FROM stuff WHERE stuffCategory = 'best'")

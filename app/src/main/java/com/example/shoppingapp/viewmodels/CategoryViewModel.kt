@@ -40,7 +40,7 @@ class CategoryViewModel@Inject constructor(
     val categoryAccessories : LiveData<List<Stuff>> = _categoryAccessories
 
     init {
-        //getCategoryBest()
+        getCategoryBest()
     }
 
     fun getCategoryBest() = viewModelScope.launch {

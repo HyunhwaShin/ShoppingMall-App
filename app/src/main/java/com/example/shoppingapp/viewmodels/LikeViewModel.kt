@@ -4,8 +4,10 @@ import androidx.lifecycle.*
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.repositories.LikeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,13 +34,18 @@ class LikeViewModel @Inject constructor(
         }
     }
 
-    fun deleteStuff(stuff: List<Stuff>){
-        val list = _getLikeStuff.value!!.toMutableList()
-        list.removeAll(stuff)
-        _getLikeStuff.value = list
-        _isDelete.value = true
-
-        likeRepository.delete(stuff)
+    fun deleteStuff(stuff: List<Stuff>)=viewModelScope.launch{
+//        val list = _getLikeStuff.value!!.toMutableList()
+//        list.removeAll(stuff)
+//        _getLikeStuff.value = list
+//        _isDelete.value = true
+        val list = mutableListOf<String>()
+        for (item in stuff){
+            list.add(item.uid)
+        }
+        withContext(Dispatchers.IO){
+            likeRepository.likeEdit(list)
+        }
     }
 
     fun toggleDeleteItemList(isCheck: Boolean, stuff: Stuff){

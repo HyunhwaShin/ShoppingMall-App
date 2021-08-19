@@ -15,11 +15,6 @@ class LikeRepository @Inject constructor(
         return stuffDao.getLikeAll()
     }
 
+    fun likeEdit(uid : List<String>) = stuffDao.likeEdit(uid)
 
-    fun delete(stuff: List<Stuff>){
-        try{
-            val thread = Thread(Runnable { stuffDao.delete(stuff) })
-            thread.start()
-        }catch (e: Exception){}
-    }
 }

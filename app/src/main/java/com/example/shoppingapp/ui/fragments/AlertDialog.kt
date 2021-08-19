@@ -28,7 +28,6 @@ class AlertDialog(private val likeViewModel: LikeViewModel) : DialogFragment() {
                     .setPositiveButton("삭제",
                             DialogInterface.OnClickListener { _, _ ->
                                 likeViewModel.deleteStuff(likeViewModel.deleteItemList.value!!)
-                                Toast.makeText(context,"삭제",Toast.LENGTH_SHORT).show()
                             })
                     .setNegativeButton("취소",
                             DialogInterface.OnClickListener{ _, _ -> })

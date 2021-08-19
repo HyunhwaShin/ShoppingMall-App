@@ -3,12 +3,14 @@
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ActivityMainBinding
+import com.example.shoppingapp.viewmodels.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,12 +19,15 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var navHostFragment: NavHostFragment
     lateinit var bottomNavigationView: BottomNavigationView
+    private val mainViewModel : MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         bottomNavigationView = binding.bottomNavigationView
+
+        mainViewModel.init()
 
         bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
 

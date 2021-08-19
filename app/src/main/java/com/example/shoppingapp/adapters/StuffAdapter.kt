@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
 
-class StuffAdapter(private val stuffViewModel : StuffViewModel): RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
+class  StuffAdapter(private val stuffViewModel : StuffViewModel): RecyclerView.Adapter<StuffAdapter.StuffViewHolder>() {
 
     inner class StuffViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -50,6 +50,7 @@ class StuffAdapter(private val stuffViewModel : StuffViewModel): RecyclerView.Ad
 
                 itemView.setOnClickListener {
                         var intent = Intent(context,DetailStuffActivity::class.java).apply {
+                            putExtra("stuff", item)
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         }
                         context.startActivity(intent)

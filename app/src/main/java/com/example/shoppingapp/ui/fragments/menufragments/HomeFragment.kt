@@ -58,8 +58,16 @@ class HomeFragment: Fragment() {
             stuffAdapter.submitList(it)
         })
 
-        stuffViewModel.getStuffAPI.observe(viewLifecycleOwner,{
+        stuffViewModel.getStuff.observe(viewLifecycleOwner,{
             stuffAdapter.submitList(it)
+        })
+
+        stuffViewModel.likeItem.observe(viewLifecycleOwner,{
+            stuffViewModel.updateLikeItem(it)
+        })
+
+        stuffViewModel.cancelItem.observe(viewLifecycleOwner,{
+            stuffViewModel.cancelLikeItem(it)
         })
 
         return binding.root

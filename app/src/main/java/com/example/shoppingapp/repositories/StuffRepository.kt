@@ -11,8 +11,15 @@ import javax.inject.Singleton
 @Singleton
 class StuffRepository @Inject constructor(
     val stuffDao: StuffDao
-){
+) {
 
     suspend fun getStuffAPI(): List<Stuff> = RetrofitInstance.api.getAllProduct()
 
+    fun getStuffAll() = stuffDao.getAll()
+
+    fun insert(stuff: List<Stuff>) = stuffDao.insert(stuff)
+
+    fun update(stuff: Stuff) = stuffDao.update(stuff.uid)
+
+    fun updateCancel(stuff: Stuff) = stuffDao.updateCancel(stuff.uid)
 }
