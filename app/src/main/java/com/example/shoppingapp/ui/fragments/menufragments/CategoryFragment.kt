@@ -29,7 +29,7 @@ class CategoryFragment : Fragment() {
     ): View? {
         binding = FragmentCategoryBinding.inflate(LayoutInflater.from(context))
 
-        categoryAdapter = CategoryAdapter()
+        categoryAdapter = CategoryAdapter(categoryViewModel)
         val gridLayoutManager = GridLayoutManager(requireContext(),3)
 
         binding.apply {
@@ -107,6 +107,14 @@ class CategoryFragment : Fragment() {
 
         categoryViewModel.categoryAccessories.observe(viewLifecycleOwner,{
             categoryAdapter.submitList(it)
+        })
+        
+        //like
+        categoryViewModel.likeItem.observe(viewLifecycleOwner,{
+            categoryViewModel.updateLikeItem(it)
+        })
+        categoryViewModel.cancelItem.observe(viewLifecycleOwner,{
+            categoryViewModel.updateCancelItem(it)
         })
     }
 }

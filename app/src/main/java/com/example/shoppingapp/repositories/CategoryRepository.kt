@@ -20,4 +20,7 @@ class CategoryRepository @Inject constructor(
     suspend fun getShoesAPI(): List<Stuff> = RetrofitInstance.api.getShoes()
     suspend fun getAccessoriesAPI(): List<Stuff> = RetrofitInstance.api.getAccessories()
 
+    fun update(stuff : Stuff) = stuffDao.update(stuff.uid)
+    fun updateCancel(stuff : Stuff) = stuffDao.updateCancel(stuff.uid)
+
 }

@@ -5,11 +5,16 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StuffDao{
+    //home
     @Query("SELECT * FROM stuff")
     fun getAll() : Flow<List<Stuff>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(item : List<Stuff>)
+
+    //like
+    @Query("SELECT * FROM stuff WHERE likeButton =1")
+    fun getLikeAll() : Flow<List<Stuff>>
 
     @Query("UPDATE stuff SET likeButton = 1 WHERE uid = :uid")
     fun update(uid : String)
@@ -19,6 +24,7 @@ interface StuffDao{
 
     @Query("UPDATE stuff SET likeButton = 0 WHERE uid in (:uid)")
     fun likeEdit(uid : List<String>)
+
 
     //category
     @Query("SELECT * FROM stuff WHERE stuffCategory = 'best'")
@@ -46,15 +52,9 @@ interface StuffDao{
     fun getAccessoriesCategory() : Flow<List<Stuff>>
 
 
-    //like
-    @Query("SELECT * FROM stuff WHERE likeButton =1")
-    fun getLikeAll() : Flow<List<Stuff>>
 
-    @Delete
-    fun delete(stuff: List<Stuff>)
-
-    //detailStuff
-//    @Query("SELECT stuffLink FROM stuff")
-//    fun getStuffLink() : Flow<List<Stuff>>
+//    @Delete
+//    fun delete(stuff: List<Stuff>)
+//
 
 }

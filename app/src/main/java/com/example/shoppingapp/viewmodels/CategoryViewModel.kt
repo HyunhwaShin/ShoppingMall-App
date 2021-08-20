@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.repositories.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,10 +41,33 @@ class CategoryViewModel@Inject constructor(
     private val _categoryAccessories : MutableLiveData<List<Stuff>> = MutableLiveData()
     val categoryAccessories : LiveData<List<Stuff>> = _categoryAccessories
 
+    private val _likeItem : MutableLiveData<Stuff> = MutableLiveData()
+    val likeItem : LiveData<Stuff> = _likeItem
+
+    private val _cancelItem : MutableLiveData<Stuff> = MutableLiveData()
+    val cancelItem : LiveData<Stuff> = _cancelItem
+
     init {
         getCategoryBest()
     }
+    //like
+     fun toggleLikeItemList(isChecked : Boolean, stuff: Stuff){
+         if(isChecked){
+             _likeItem.value = stuff
+         }else{ _cancelItem.value = stuff}
+     }
+    fun updateLikeItem(stuff: Stuff)=viewModelScope.launch{
+        withContext(Dispatchers.IO){
+            categoryRepository.update(stuff)
+        }
+    }
+    fun updateCancelItem(stuff : Stuff)=viewModelScope.launch{
+        withContext(Dispatchers.IO){
+            categoryRepository.updateCancel(stuff)
+        }
+    }
 
+    //category
     fun getCategoryBest() = viewModelScope.launch {
         _categoryBest.value = categoryRepository.getBestAPI()
     }

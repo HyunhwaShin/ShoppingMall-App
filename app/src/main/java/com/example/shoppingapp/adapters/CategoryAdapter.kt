@@ -14,13 +14,14 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ItemStuffBinding
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.ui.activities.DetailStuffActivity
+import com.example.shoppingapp.viewmodels.CategoryViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
 
-class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(private val categoryViewModel: CategoryViewModel) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(private val binding: ItemStuffBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -31,6 +32,10 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolde
                 item.product_price.toString().also { price.text = it }
                 btnCheckbox.isChecked = item.checkBox
                 btnFavorite.isChecked = item.isLike
+
+                btnFavorite.setOnCheckedChangeListener { btn, isCheck ->
+                    categoryViewModel.toggleLikeItemList(isCheck,item)
+                }
 
                 var launch = CoroutineScope(Dispatchers.IO).launch {
                     val inputStream = URL(item.product_img).openStream()

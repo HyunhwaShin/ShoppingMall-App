@@ -44,7 +44,6 @@ class HomeFragment: Fragment() {
             etSearch.setOnEditorActionListener { v, actionId, event ->
                 var handled = false
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //search event with server
                     stuffViewModel.searchTest(etSearch.text.toString())
                     etSearch.setText("")
                     handled = true

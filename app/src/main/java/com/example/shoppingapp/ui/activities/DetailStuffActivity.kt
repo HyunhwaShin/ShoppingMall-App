@@ -12,17 +12,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailStuffActivity : AppCompatActivity(){
     lateinit var binding: ActivityDetailstuffBinding
-//    private val detailStuffViewModel : DetailStuffViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detailstuff)
 
-//        var shopName = intent.getStringExtra("shopName")
-//        var price = intent.getStringExtra("price")
-
         var stuff = intent.getSerializableExtra("stuff") as Stuff
-
 
         binding.apply {
 
