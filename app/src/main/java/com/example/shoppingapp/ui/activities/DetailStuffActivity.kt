@@ -2,16 +2,20 @@ package com.example.shoppingapp.ui.activities
 
 import android.os.Bundle
 import android.webkit.WebViewClient
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ActivityDetailstuffBinding
 import com.example.shoppingapp.db.Stuff
+import com.example.shoppingapp.viewmodels.DetailStuffViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailStuffActivity : AppCompatActivity(){
     lateinit var binding: ActivityDetailstuffBinding
+    private val detailStuffViewModel : DetailStuffViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,15 @@ class DetailStuffActivity : AppCompatActivity(){
             btnExit.setOnClickListener{
                 finish()
             }
+            btnFavorite.setOnCheckedChangeListener { btn, isCheck ->
+                detailStuffViewModel.toggleLikeItem(isCheck,stuff)
+            }
         }
+        detailStuffViewModel.likeItem.observe(this,{
+            detailStuffViewModel.likeItem(stuff)
+        })
+        detailStuffViewModel.cancelItem.observe(this,{
+            detailStuffViewModel.cancelLikeItem(stuff)
+        })
     }
 }

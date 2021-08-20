@@ -16,6 +16,7 @@ interface StuffDao{
     @Query("SELECT * FROM stuff WHERE likeButton =1")
     fun getLikeAll() : Flow<List<Stuff>>
 
+    //likeButton
     @Query("UPDATE stuff SET likeButton = 1 WHERE uid = :uid")
     fun update(uid : String)
 

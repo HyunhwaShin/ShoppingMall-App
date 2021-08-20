@@ -31,6 +31,7 @@ class LikeAdapter(private val likeViewModel: LikeViewModel): RecyclerView.Adapte
             binding.apply {
                 stuffName.text = item.product_name
                 shopName.text = item.shop_name
+                price.text = item.product_price.toString()
                 btnCheckbox.isChecked = item.checkBox
                 btnFavorite.visibility = View.GONE
 

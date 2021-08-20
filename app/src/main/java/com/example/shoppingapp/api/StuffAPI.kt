@@ -36,9 +36,4 @@ interface StuffAPI {
     @GET("product/category?type=악세서리")
     suspend fun getAccessories():List<Stuff>
 
-
-
-    //like
-//    @POST("product_like")
-//    suspend fun updateProductLike(productLike: ProductLike)
 }
