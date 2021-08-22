@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="color_spinner">
+        <item>블랙</item>
+        <item>네이비</item>
+        <item>그레이</item>
+        <item>스카이 블루</item>
+        <item>퍼플</item>
+        <item>핑크</item>
+    </string-array>
+
+    <string-array name="size_spinner">
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+    </string-array>
+</resources>
