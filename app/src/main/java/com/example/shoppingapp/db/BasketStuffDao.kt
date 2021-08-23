@@ -9,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface BasketStuffDao {
 
     @Query("SELECT * FROM basketStuff ")
-    fun getBasketItem() : Flow<BasketStuff>
+    fun getAllBasketItem() : Flow<List<BasketStuff>>
 }
