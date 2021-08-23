@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingapp.adapters.BasketAdapter
 import com.example.shoppingapp.databinding.FragmentBasketBinding
 import com.example.shoppingapp.viewmodels.BasketViewModel
@@ -22,20 +23,26 @@ class BasketFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBasketBinding.inflate(LayoutInflater.from(context))
+            binding = FragmentBasketBinding.inflate(LayoutInflater.from(context))
 
+            basketAdapter = BasketAdapter(basketViewModel)
 
-        binding.apply {
-            btnExit.setOnClickListener {
-                activity?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.remove(this@BasketFragment)
-                    ?.commit()
+            binding.apply {
+                basketRecyclerview.adapter = basketAdapter
+                basketRecyclerview.layoutManager = LinearLayoutManager(context)
+
+                btnExit.setOnClickListener {
+                    activity?.supportFragmentManager
+                        ?.beginTransaction()
+                        ?.remove(this@BasketFragment)
+                        ?.commit()
+                    }
                 }
+            basketViewModel.getAllItem.observe(viewLifecycleOwner,{
+                basketAdapter.submitList(it)
+            })
 
-            }
 
-
-        return binding.root
+            return binding.root
     }
 }

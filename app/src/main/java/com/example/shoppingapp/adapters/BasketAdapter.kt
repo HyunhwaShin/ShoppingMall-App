@@ -29,6 +29,8 @@ class BasketAdapter(private val basketViewModel: BasketViewModel): RecyclerView.
             binding.apply {
                 stuffName.text = item.product_name
                 stuffPrice.text = item.product_price.toString()
+                stuffColor.text = item.product_color
+                stuffSize.text = item.product_size
 
                 var launch = CoroutineScope(Dispatchers.IO).launch {
                     val inputStream = URL(item.product_img).openStream()
