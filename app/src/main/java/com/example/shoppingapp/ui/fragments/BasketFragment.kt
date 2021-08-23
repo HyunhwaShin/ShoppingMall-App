@@ -25,6 +25,15 @@ class BasketFragment: Fragment() {
         binding = FragmentBasketBinding.inflate(LayoutInflater.from(context))
 
 
+        binding.apply {
+            btnExit.setOnClickListener {
+                activity?.supportFragmentManager
+                    ?.beginTransaction()
+                    ?.remove(this@BasketFragment)
+                    ?.commit()
+                }
+
+            }
 
 
         return binding.root
