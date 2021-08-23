@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <CheckBox
+            android:id="@+id/btn_check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_checkbox"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/stuff_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_ex_image"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_check"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stuff_name"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="stuffName"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/stuff_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/select_detail"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="ex) 네이비 / M"
+            android:gravity="center_vertical"
+            android:textSize="13sp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/stuff_image"
+            app:layout_constraintTop_toBottomOf="@+id/stuff_name" />
+
+        <ImageButton
+            android:id="@+id/btn_exit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp" />
+
+        <TextView
+            android:id="@+id/stuff_price"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:gravity="right|center_vertical"
+            android:text="price"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_detail" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="원"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/stuff_price"
+            app:layout_constraintTop_toBottomOf="@+id/select_detail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

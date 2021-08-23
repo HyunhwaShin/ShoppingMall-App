@@ -1,23 +1,15 @@
 package com.example.shoppingapp.ui.activities
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.webkit.WebViewClient
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ActivityDetailstuffBinding
 import com.example.shoppingapp.db.Stuff
-import com.example.shoppingapp.ui.fragments.ColorSizeDialog
+import com.example.shoppingapp.ui.fragments.SelectDetailDialog
 import com.example.shoppingapp.viewmodels.DetailStuffViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,7 +39,7 @@ class DetailStuffActivity : FragmentActivity(){
                 detailStuffViewModel.toggleLikeItem(isCheck,stuff)
             }
             btnSelectDetail.setOnClickListener {
-                val bottomSheet = ColorSizeDialog()
+                val bottomSheet = SelectDetailDialog()
                 bottomSheet.show(supportFragmentManager,bottomSheet.tag)
             }
         }

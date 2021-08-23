@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.shoppingapp.other.Constants.DATABASE_NAME
 
 @Database(
-        entities = [Stuff::class , ShopRanking::class, Delivery::class],
+        entities = [Stuff::class , ShopRanking::class, Delivery::class, BasketStuff::class],
         version = 1,
         exportSchema = false
 )
@@ -15,6 +15,7 @@ abstract class AppDatabase :RoomDatabase(){
     abstract fun stuffDao() : StuffDao
     abstract fun shopRankingDao() : ShopRankingDao
     abstract fun deliveryDao() : DeliveryDao
+    abstract fun basketStuffDao() : BasketStuffDao
 
     companion object{
         @Volatile private var instance : AppDatabase? = null

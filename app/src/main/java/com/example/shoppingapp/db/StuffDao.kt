@@ -53,9 +53,4 @@ interface StuffDao{
     fun getAccessoriesCategory() : Flow<List<Stuff>>
 
 
-
-//    @Delete
-//    fun delete(stuff: List<Stuff>)
-//
-
 }

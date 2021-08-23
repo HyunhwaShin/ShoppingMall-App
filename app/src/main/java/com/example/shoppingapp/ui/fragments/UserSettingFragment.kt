@@ -75,8 +75,6 @@ class UserSettingFragment : Fragment() {
             .putString(KEY_EMAIL, email)
             .putBoolean(KEY_FIRST_TIME_TOGGLE, false)
             .apply()
-        //name, email 적용해서 넣을 공간
-
         return true
     }
 }

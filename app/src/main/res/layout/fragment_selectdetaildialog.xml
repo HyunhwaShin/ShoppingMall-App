@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="match_parent">
 
         <ImageButton
             android:id="@+id/btn_exit"
@@ -45,14 +45,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/color_spinner" />
 
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/dialog_recyclerview"-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            tools:listitem="@layout/item_basket"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginBottom="15dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/btn_go_basket"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/size_spinner" />-->
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
+
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="size"
+            app:layout_constraintTop_toBottomOf="@+id/color"
+            tools:layout_editor_absoluteX="40dp" />
+
         <Button
             android:id="@+id/btn_go_basket"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:text="장바구니에 담기"
-            android:background="@color/purple"
             android:layout_marginBottom="30dp"
-            android:layout_marginTop="70dp"
+            android:background="@color/purple"
+            android:text="장바구니에 담기"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

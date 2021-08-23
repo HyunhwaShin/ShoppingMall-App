@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.example.shoppingapp.db.AppDatabase
+import com.example.shoppingapp.other.Constants.KEY_COLOR
 import com.example.shoppingapp.other.Constants.KEY_FIRST_TIME_TOGGLE
 import com.example.shoppingapp.other.Constants.KEY_NAME
 import com.example.shoppingapp.other.Constants.KEY_EMAIL
+import com.example.shoppingapp.other.Constants.KEY_SIZE
 import com.example.shoppingapp.other.Constants.SHARED_PREFERENCES_NAME
+import com.example.shoppingapp.other.Constants.SHARED_PREFERENCES_NAME_2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,9 +41,12 @@ object AppModule {
     @Provides
     fun provideDeliveryDao(database : AppDatabase) = database.deliveryDao()
 
+    @Provides
+    fun provideBasketStuffDao(database: AppDatabase) = database.basketStuffDao()
+
     @Singleton
     @Provides
-    fun provideSharedPreferences(@ApplicationContext app:Context) : SharedPreferences =
+    fun provideUserSharedPreferences(@ApplicationContext app:Context) : SharedPreferences =
         app.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     @Singleton
@@ -55,4 +61,5 @@ object AppModule {
     @Provides
     fun provideFirstTimeToggle(sharedPref: SharedPreferences) =
         sharedPref.getBoolean(KEY_FIRST_TIME_TOGGLE, true)
+
 }
