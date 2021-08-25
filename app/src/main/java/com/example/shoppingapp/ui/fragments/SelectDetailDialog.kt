@@ -1,20 +1,22 @@
 package com.example.shoppingapp.ui.fragments
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.SelectDetailAdapter
 import com.example.shoppingapp.databinding.FragmentSelectdetaildialogBinding
+import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.viewmodels.SelectedDetailViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class SelectDetailDialog : BottomSheetDialogFragment(){
@@ -29,9 +31,12 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
     ): View? {
         binding = FragmentSelectdetaildialogBinding.inflate(LayoutInflater.from(context))
         isCancelable = false
+        selectDetailAdapter = SelectDetailAdapter()
 
-        selectDetailAdapter = SelectDetailAdapter(selectedDetailViewModel)
         setSpinner()
+        setObserver()
+
+        var basket = requireActivity().intent!!.getSerializableExtra("stuff") as Stuff?
 
         val color = resources.getStringArray(R.array.color_spinner)
         val size = resources.getStringArray(R.array.size_spinner)
@@ -45,11 +50,15 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
             btnExit.setOnClickListener {
                 dismiss()
             }
-            btnGoBasket.setOnClickListener {
-                //repository.insert 이런걸로 모든정보 저장!
-            }
-        }
 
+            btnGoBasket.setOnClickListener {
+                basket?.product_name?.let { it1 -> selectedDetailViewModel.getSelectedStuffName(it1) }
+                basket?.product_price?.let { it -> selectedDetailViewModel.getSelectedPrice(it) }
+
+                selectedDetailViewModel.check()
+            }
+
+        }
         return binding.root
     }
 
@@ -61,13 +70,9 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedColor = binding.colorSpinner.selectedItem.toString()
-                selectedDetailViewModel._getColor.value = selectedColor
+                selectedDetailViewModel.getSelectedColor(selectedColor)
+                binding.tvColor.text = selectedColor
 
-
-//                selectedDetailViewModel.getColor.observe(viewLifecycleOwner,{
-//                    selectDetailAdapter.submitList(selectedColor)
-//                })
-               // sharedPref.edit().putString(KEY_COLOR, selectedColor).apply()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -80,23 +85,27 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedSize= binding.sizeSpinner.selectedItem.toString()
-                selectedDetailViewModel._getSize.value = selectedSize
+                selectedDetailViewModel.getSelectedSize(selectedSize)
+                binding.tvSize.text = selectedSize
 
-
-//                selectedDetailViewModel.getSize.observe(viewLifecycleOwner,{
-//                    selectDetailAdapter.submitList(selectedSize)
-//                })
-               // sharedPref.edit().putString(KEY_SIZE, selectedSize).apply()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }
-//    private fun loadDataFromSharedPref() {
-//        val loadColor = sharedPref.getString(Constants.KEY_COLOR,"")
-//        val loadSize = sharedPref.getString(Constants.KEY_SIZE,"")
-//        binding.color.text= loadColor
-//        binding.size.text= loadSize
-//    }
+    private fun setObserver(){
+        selectedDetailViewModel.isComplete.observe(viewLifecycleOwner,{
+            if(it){
+                Toast.makeText(context,"장바구니에 담겼습니다.", Toast.LENGTH_LONG).show()
+                runBlocking { delay(2000) }
+                selectedDetailViewModel.setIsComplete(false)
+                dismiss()
+            }else{
+                Toast.makeText(context,"색상과 사이즈를 모두 선택해주세요.", Toast.LENGTH_LONG).show()
+            }
+        })
+
+
+    }
 }

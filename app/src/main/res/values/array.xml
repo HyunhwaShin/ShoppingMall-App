@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="color_spinner">
+        <item></item>
         <item>블랙</item>
         <item>네이비</item>
         <item>그레이</item>
@@ -10,6 +11,7 @@
     </string-array>
 
     <string-array name="size_spinner">
+        <item></item>
         <item>S</item>
         <item>M</item>
         <item>L</item>

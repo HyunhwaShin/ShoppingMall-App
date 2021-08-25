@@ -3,6 +3,7 @@ package com.example.shoppingapp.adapters
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,7 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ItemStuffBinding
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.ui.activities.DetailStuffActivity
+import com.example.shoppingapp.ui.fragments.SelectDetailDialog
 import com.example.shoppingapp.viewmodels.StuffViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,11 +34,9 @@ class  StuffAdapter(private val stuffViewModel : StuffViewModel): RecyclerView.A
                 item.product_price.toString().also { price.text = it }
                 btnCheckbox.isChecked = item.checkBox
                 btnFavorite.isChecked = item.isLike
-
                 btnFavorite.setOnCheckedChangeListener { btn, isCheck ->
                     stuffViewModel.toggleLikeItemList(isCheck,item)
                 }
-
                 var launch = CoroutineScope(Dispatchers.IO).launch {
                     val inputStream = URL(item.product_img).openStream()
                     val bitmap = BitmapFactory.decodeStream(inputStream)
@@ -46,8 +46,6 @@ class  StuffAdapter(private val stuffViewModel : StuffViewModel): RecyclerView.A
                             .into(stuffImage)
                     }
                 }
-
-
                 itemView.setOnClickListener {
                         var intent = Intent(context,DetailStuffActivity::class.java).apply {
                             putExtra("stuff", item)

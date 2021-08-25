@@ -1,6 +1,7 @@
 package com.example.shoppingapp.ui.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebViewClient
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -49,6 +50,8 @@ class DetailStuffActivity : FragmentActivity(){
         detailStuffViewModel.cancelItem.observe(this,{
             detailStuffViewModel.cancelLikeItem(stuff)
         })
+
+
     }
 
 }

@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
 
-class SelectDetailAdapter(private val selectedDetailViewModel: SelectedDetailViewModel): RecyclerView.Adapter<SelectDetailAdapter.SelectDetailViewHolder>() {
+class SelectDetailAdapter(): RecyclerView.Adapter<SelectDetailAdapter.SelectDetailViewHolder>() {
 
     inner class SelectDetailViewHolder(private val binding : ItemBasketBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -38,11 +38,6 @@ class SelectDetailAdapter(private val selectedDetailViewModel: SelectedDetailVie
                             .into(stuffImage)
                     }
                 }
-
-                btnCheck.setOnCheckedChangeListener { btn, isCheck ->
-                    selectedDetailViewModel.toggleGoBasketItemList(isCheck,item)
-                }
-
             }
         }
     }

@@ -40,39 +40,60 @@
             android:spinnerMode="dropdown"
             android:layout_marginBottom="50dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_go_basket"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/color_spinner" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/dialog_recyclerview"-->
-<!--            android:layout_width="400dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            tools:listitem="@layout/item_basket"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:layout_marginBottom="15dp"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/btn_go_basket"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/size_spinner" />-->
 
         <TextView
-            android:id="@+id/color"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="color"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/textView2"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:text="선택된 세부사항 : "
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginStart="75dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
 
         <TextView
-            android:id="@+id/size"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:id="@+id/tv_color"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="color"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
+
+        <TextView
+            android:id="@+id/tv_slash"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="/"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_color"
+            app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
+
+
+        <TextView
+            android:id="@+id/tv_size"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
             android:text="size"
-            app:layout_constraintTop_toBottomOf="@+id/color"
-            tools:layout_editor_absoluteX="40dp" />
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_slash"
+            app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
 
         <Button
             android:id="@+id/btn_go_basket"
@@ -81,9 +102,11 @@
             android:layout_marginBottom="30dp"
             android:background="@color/purple"
             android:text="장바구니에 담기"
+            android:layout_marginTop="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_color" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
