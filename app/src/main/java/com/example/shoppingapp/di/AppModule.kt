@@ -44,6 +44,9 @@ object AppModule {
     @Provides
     fun provideBasketStuffDao(database: AppDatabase) = database.basketStuffDao()
 
+    @Provides
+    fun providePaymentDao(database: AppDatabase) = database.paymentDao()
+
     @Singleton
     @Provides
     fun provideUserSharedPreferences(@ApplicationContext app:Context) : SharedPreferences =

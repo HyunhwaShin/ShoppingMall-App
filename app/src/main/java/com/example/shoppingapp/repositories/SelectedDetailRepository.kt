@@ -11,7 +11,7 @@ class SelectedDetailRepository@Inject constructor(
     val basketStuffDao: BasketStuffDao
 ){
 
-    suspend fun insert(basketStuff: BasketStuff){
+    fun insert(basketStuff: BasketStuff){
         basketStuffDao.insert(basketStuff)
     }
 

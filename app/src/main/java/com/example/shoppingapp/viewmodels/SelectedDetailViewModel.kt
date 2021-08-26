@@ -24,9 +24,6 @@ class SelectedDetailViewModel @Inject constructor(
     private val _getStuffName : MutableLiveData<String> = MutableLiveData()
 
     private val _getPrice : MutableLiveData<Int> = MutableLiveData()
-//
-//    private val _goBasketList : MutableLiveData<MutableList<BasketStuff>> = MutableLiveData(mutableListOf())
-//    val goBasketList : LiveData<MutableList<BasketStuff>> = _goBasketList
 
     private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
     val isComplete: LiveData<Boolean> = _isComplete
@@ -67,24 +64,4 @@ class SelectedDetailViewModel @Inject constructor(
         }
     }
 
-    //BasketViewModel 에 넣기^^
-//    fun toggleGoBasketItemList(isCheck: Boolean, basketStuff: BasketStuff){
-//        val list = _goBasketList.value!!
-//        if(isCheck){
-//            list.add(basketStuff)
-//            _goBasketList.value = list
-//        }else{
-//            list.remove(basketStuff)
-//            _goBasketList.value = list
-//        }
-//    }
-//    fun goBasketStuff(basketStuff: List<BasketStuff>)=viewModelScope.launch{
-//        val list = mutableListOf<String>()
-//        for (item in basketStuff){
-//            list.add(item.uid)
-//        }
-//        withContext(Dispatchers.IO){
-//            //selectedDetailRepository.goPayment(list)
-//        }
-//    }
 }

@@ -7,12 +7,10 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface BasketStuffDao {
-
-    @Query("SELECT * FROM basketStuff ")
-    fun getAllBasketItem() : Flow<List<BasketStuff>>
+interface PaymentDao {
+    @Query("SELECT * FROM payment ")
+    fun getAllPayment() : Flow<List<Payment>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(basketStuff : BasketStuff)
-
+    fun insert(item: List<String>)
 }

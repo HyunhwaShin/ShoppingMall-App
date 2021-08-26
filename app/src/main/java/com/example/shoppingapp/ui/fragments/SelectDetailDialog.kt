@@ -52,7 +52,7 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
             }
 
             btnGoBasket.setOnClickListener {
-                basket?.product_name?.let { it1 -> selectedDetailViewModel.getSelectedStuffName(it1) }
+                basket?.product_name?.let { it -> selectedDetailViewModel.getSelectedStuffName(it) }
                 basket?.product_price?.let { it -> selectedDetailViewModel.getSelectedPrice(it) }
 
                 selectedDetailViewModel.check()
