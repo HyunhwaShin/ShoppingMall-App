@@ -12,9 +12,6 @@ object Constants {
     const val KEY_NAME = "KEY_NAME"
     const val KEY_EMAIL = "KEY_EMAIL"
 
-    const val KEY_COLOR = "KEY_COLOR"
-    const val KEY_SIZE = "KEY_SIZE"
-
     const val PAGE_COUNT = 2
 
     const val BASE_URL = "http://15.165.14.74:8080"

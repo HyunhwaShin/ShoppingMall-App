@@ -43,8 +43,9 @@ class BasketFragment: Fragment() {
             btnGoPayment.setOnClickListener {
                 //basketViewModel.goPayment(basketViewModel.goPaymentList.value!!)
             }
+
             basketViewModel.totalPrice.observe(viewLifecycleOwner,{
-                basketViewModel.totalPrice(it)
+               totalPrice.text = it.toString()
             })
 
             return binding.root

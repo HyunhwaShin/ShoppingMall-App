@@ -22,10 +22,8 @@ class BasketViewModel @Inject constructor(
     val getAllItem : LiveData<List<BasketStuff>> = _getAllItem
 
     private val _goPaymentList : MutableLiveData<MutableList<BasketStuff>> = MutableLiveData(mutableListOf())
-    val goPaymentList : LiveData<MutableList<BasketStuff>> = _goPaymentList
 
-    private val _getPrice : MutableLiveData<Int> = MutableLiveData()
-    val getPrice : LiveData<Int> = _getPrice
+    private var getPrice : Int = 0
 
     private val _totalPrice : MutableLiveData<Int> = MutableLiveData()
     val totalPrice : LiveData<Int> = _totalPrice
@@ -40,18 +38,34 @@ class BasketViewModel @Inject constructor(
         }
     }
 
-    fun toggleGoPaymentItemList(isCheck: Boolean, basketStuff: BasketStuff){
+    //price
+    fun toggleGoPaymentItemList(isCheck: Boolean, basketStuff: BasketStuff) {
         val list = _goPaymentList.value!!
-        if(isCheck){
+
+        if (isCheck) {
             list.add(basketStuff)
             _goPaymentList.value = list
-        }else{
+        } else {
             list.remove(basketStuff)
             _goPaymentList.value = list
         }
     }
 
-    //check 보류!!
+    fun toggleCalculateTotalPrice(isCheck: Boolean, value: Int){
+        if(isCheck){
+            getPrice= getPrice.plus(value)
+            totalPrice(getPrice)
+        }else{
+            getPrice= getPrice.minus(value)
+            totalPrice(getPrice)
+        }
+    }
+
+    fun totalPrice (value : Int){
+        _totalPrice.value = value
+    }
+
+    //미완성
     fun goPayment(payment: List<Payment>)=viewModelScope.launch{
         val list = mutableListOf<String>()
         for (item in payment){
@@ -61,16 +75,5 @@ class BasketViewModel @Inject constructor(
            // basketRepository.insertPayment(list)
         }
     }
-    fun toggleCalculateTotalPrice(isCheck: Boolean, value: Int){
-        if(isCheck){
-            _getPrice.value = _getPrice.value?.plus(value)
-        }else{
-            _getPrice.value = _getPrice.value?.minus(value)
-        }
-//        _getPrice.value = value
-    }
 
-    fun totalPrice (value : Int){
-        _totalPrice.value = _getPrice.value
-    }
 }

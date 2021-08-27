@@ -12,5 +12,5 @@ interface PaymentDao {
     fun getAllPayment() : Flow<List<Payment>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(item: List<String>)
+    fun insert(item: List<Payment>)
 }
