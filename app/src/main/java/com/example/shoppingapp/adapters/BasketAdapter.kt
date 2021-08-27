@@ -46,6 +46,11 @@ class BasketAdapter(private val basketViewModel: BasketViewModel): RecyclerView.
                     item.product_price?.let { basketViewModel.toggleCalculateTotalPrice(isCheck,it) }
                 }
 
+                btnDelete.setOnClickListener {
+                    basketViewModel.deleteItem(item)
+                    item.product_price?.let { basketViewModel.toggleCalculateTotalPrice(isCheck = false, it)}
+                }
+
             }
         }
     }

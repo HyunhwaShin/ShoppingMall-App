@@ -28,6 +28,7 @@ class BasketViewModel @Inject constructor(
     private val _totalPrice : MutableLiveData<Int> = MutableLiveData()
     val totalPrice : LiveData<Int> = _totalPrice
 
+
     init {
         getBasketAllItem()
     }
@@ -63,6 +64,12 @@ class BasketViewModel @Inject constructor(
 
     fun totalPrice (value : Int){
         _totalPrice.value = value
+    }
+
+    fun deleteItem (basketStuff : BasketStuff)= viewModelScope.launch {
+        withContext(Dispatchers.IO){
+            basketRepository.deleteFromBasket(basketStuff)
+        }
     }
 
     //미완성
