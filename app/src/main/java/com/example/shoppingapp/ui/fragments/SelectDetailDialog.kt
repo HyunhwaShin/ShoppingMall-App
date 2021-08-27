@@ -54,6 +54,7 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
             btnGoBasket.setOnClickListener {
                 basket?.product_name?.let { it -> selectedDetailViewModel.getSelectedStuffName(it) }
                 basket?.product_price?.let { it -> selectedDetailViewModel.getSelectedPrice(it) }
+                basket?.product_img?.let { it -> selectedDetailViewModel.getSelectedImage(it) }
 
                 selectedDetailViewModel.check()
             }
@@ -98,7 +99,7 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
         selectedDetailViewModel.isComplete.observe(viewLifecycleOwner,{
             if(it){
                 Toast.makeText(context,"장바구니에 담겼습니다.", Toast.LENGTH_LONG).show()
-                runBlocking { delay(2000) }
+                runBlocking { delay(1500) }
                 selectedDetailViewModel.setIsComplete(false)
                 dismiss()
             }else{

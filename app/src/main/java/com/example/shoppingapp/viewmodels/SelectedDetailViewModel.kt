@@ -25,6 +25,8 @@ class SelectedDetailViewModel @Inject constructor(
 
     private val _getPrice : MutableLiveData<Int> = MutableLiveData()
 
+    private val _getImage : MutableLiveData<String> = MutableLiveData()
+
     private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
     val isComplete: LiveData<Boolean> = _isComplete
 
@@ -45,13 +47,17 @@ class SelectedDetailViewModel @Inject constructor(
         _getPrice.value = value
     }
 
+    fun getSelectedImage(value : String){
+        _getImage.value = value
+    }
+
     fun setIsComplete(value: Boolean){
         _isComplete.value = value
     }
 
     fun check(){
         if(!(_getColor.value!!.isEmpty() || _getSize.value!!.isEmpty())){
-            val basket = BasketStuff(null,"",_getStuffName.value!!,_getPrice.value,_getSize.value!!,_getColor.value!!,true)
+            val basket = BasketStuff(null,_getImage.value!!,_getStuffName.value!!,_getPrice.value,_getSize.value!!,_getColor.value!!,true)
             insert(basket)
             _isComplete.value = true
         }else{

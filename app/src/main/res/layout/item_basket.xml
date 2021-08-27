@@ -4,27 +4,27 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_height="wrap_content">
 
         <CheckBox
             android:id="@+id/btn_check"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:background="@drawable/custom_checkbox"
             android:button="@android:color/transparent"
             android:checked="false"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="70dp"
             android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/stuff_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="5dp"
             android:src="@drawable/ic_ex_image"
-            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_check"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +37,7 @@
             android:textSize="13sp"
             android:gravity="center_vertical"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintStart_toEndOf="@+id/stuff_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,25 +84,31 @@
             android:src="@drawable/ic_x"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="5dp" />
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"/>
 
         <TextView
             android:id="@+id/stuff_price"
-            android:layout_width="350dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:gravity="right|center_vertical"
             android:text="price"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginRight="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/won"
             app:layout_constraintTop_toBottomOf="@+id/stuff_color" />
 
         <TextView
+            android:id="@+id/won"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="원"
             android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/stuff_price"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stuff_color" />
 
         <View
