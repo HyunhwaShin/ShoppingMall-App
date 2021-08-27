@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "basketStuff")
-data class BasketStuff(@PrimaryKey val uid: String = "",
+data class BasketStuff(@PrimaryKey(autoGenerate = true) val uid: Long? = null,
                        @ColumnInfo(name ="stuffImage")val product_img: String = "",
                        @ColumnInfo(name ="stuffName") val product_name: String= "",
                        @ColumnInfo(name ="stuffPrice") val product_price: Int? = null,

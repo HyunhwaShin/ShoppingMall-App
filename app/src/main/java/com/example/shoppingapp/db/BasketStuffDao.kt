@@ -13,6 +13,6 @@ interface BasketStuffDao {
     fun getAllBasketItem() : Flow<List<BasketStuff>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(basketStuff : BasketStuff)
+    suspend fun insert(basketStuff : BasketStuff)
 
 }
