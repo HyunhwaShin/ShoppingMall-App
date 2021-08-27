@@ -42,7 +42,7 @@ class BasketAdapter(private val basketViewModel: BasketViewModel): RecyclerView.
                 }
 
                 btnCheck.setOnCheckedChangeListener { btn, isCheck ->
-                    basketViewModel.toggleGoPaymentItemList(isCheck,item)
+                    basketViewModel.toggleBasketToPaymentItemList(isCheck,item)
                     item.product_price?.let { basketViewModel.toggleCalculateTotalPrice(isCheck,it) }
                 }
 

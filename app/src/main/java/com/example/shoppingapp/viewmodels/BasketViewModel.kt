@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.db.BasketStuff
-import com.example.shoppingapp.db.Payment
+import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.repositories.BasketRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -21,13 +21,13 @@ class BasketViewModel @Inject constructor(
     private val _getAllItem : MutableLiveData<List<BasketStuff>> = MutableLiveData()
     val getAllItem : LiveData<List<BasketStuff>> = _getAllItem
 
-    private val _goPaymentList : MutableLiveData<MutableList<BasketStuff>> = MutableLiveData(mutableListOf())
+    private val _basketToPaymentList : MutableLiveData<MutableList<BasketStuff>> = MutableLiveData(mutableListOf())
+    val basketToPaymentList : LiveData<MutableList<BasketStuff>> = _basketToPaymentList
 
     private var getPrice : Int = 0
 
     private val _totalPrice : MutableLiveData<Int> = MutableLiveData()
     val totalPrice : LiveData<Int> = _totalPrice
-
 
     init {
         getBasketAllItem()
@@ -36,19 +36,6 @@ class BasketViewModel @Inject constructor(
     fun getBasketAllItem() = viewModelScope.launch {
         basketRepository.getAllBasketItem().collect {
             _getAllItem.value = it
-        }
-    }
-
-    //price
-    fun toggleGoPaymentItemList(isCheck: Boolean, basketStuff: BasketStuff) {
-        val list = _goPaymentList.value!!
-
-        if (isCheck) {
-            list.add(basketStuff)
-            _goPaymentList.value = list
-        } else {
-            list.remove(basketStuff)
-            _goPaymentList.value = list
         }
     }
 
@@ -62,6 +49,30 @@ class BasketViewModel @Inject constructor(
         }
     }
 
+    fun toggleBasketToPaymentItemList(isCheck: Boolean, basketStuff: BasketStuff) {
+        val list = _basketToPaymentList.value!!
+
+        if (isCheck) {
+            list.add(basketStuff)
+            _basketToPaymentList.value = list
+
+        } else {
+            list.remove(basketStuff)
+            _basketToPaymentList.value = list
+        }
+    }
+
+    fun goPaymentList(basketStuff: List<BasketStuff>)=viewModelScope.launch{
+
+        val list = mutableListOf<String>()
+        for (item in basketStuff){
+            list.add(item.uid.toString())
+        }
+        withContext(Dispatchers.IO){
+            basketRepository.goPayment(list)
+        }
+    }
+
     fun totalPrice (value : Int){
         _totalPrice.value = value
     }
@@ -71,16 +82,4 @@ class BasketViewModel @Inject constructor(
             basketRepository.deleteFromBasket(basketStuff)
         }
     }
-
-    //미완성
-    fun goPayment(payment: List<Payment>)=viewModelScope.launch{
-        val list = mutableListOf<String>()
-        for (item in payment){
-            list.add(item.uid)
-        }
-        withContext(Dispatchers.IO){
-           // basketRepository.insertPayment(list)
-        }
-    }
-
 }

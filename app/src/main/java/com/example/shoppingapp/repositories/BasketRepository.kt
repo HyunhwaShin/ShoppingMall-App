@@ -2,7 +2,6 @@ package com.example.shoppingapp.repositories
 
 import com.example.shoppingapp.db.BasketStuff
 import com.example.shoppingapp.db.BasketStuffDao
-import com.example.shoppingapp.db.PaymentDao
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,5 +16,5 @@ class BasketRepository @Inject constructor(
 
     suspend fun deleteFromBasket(basketStuff: BasketStuff) = basketStuffDao.delete(basketStuff)
 
-   // fun insertPayment(payment: List<String>) = paymentDao.insert(payment)
+    fun goPayment(uid : List<String>) = basketStuffDao.goPayment(uid)
 }

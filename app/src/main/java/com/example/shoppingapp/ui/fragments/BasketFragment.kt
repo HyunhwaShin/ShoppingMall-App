@@ -33,22 +33,35 @@ class BasketFragment: Fragment() {
             basketRecyclerview.adapter = basketAdapter
             basketRecyclerview.layoutManager = LinearLayoutManager(context)
 
+            return binding.root
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListener()
+        setObserver()
+    }
+
+    private fun setListener() {
+        binding.apply {
             btnExit.setOnClickListener {
                 findNavController().navigate(R.id.action_basketFragment_to_homeFragment)
             }
-            basketViewModel.getAllItem.observe(viewLifecycleOwner, {
-                basketAdapter.submitList(it)
-            })
-
             btnGoPayment.setOnClickListener {
-                //basketViewModel.goPayment(basketViewModel.goPaymentList.value!!)
+                basketViewModel.goPaymentList(basketViewModel.basketToPaymentList.value!!)
+                findNavController().navigate(R.id.action_basketFragment_to_paymentFragment)
             }
-
-            basketViewModel.totalPrice.observe(viewLifecycleOwner,{
-               totalPrice.text = it.toString()
-            })
-
-            return binding.root
         }
+    }
+
+    private fun setObserver() {
+        basketViewModel.getAllItem.observe(viewLifecycleOwner, {
+            basketAdapter.submitList(it)
+        })
+
+        basketViewModel.totalPrice.observe(viewLifecycleOwner,{
+            binding.totalPrice.text = it.toString()
+        })
     }
 }

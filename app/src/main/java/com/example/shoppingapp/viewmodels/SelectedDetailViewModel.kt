@@ -57,7 +57,7 @@ class SelectedDetailViewModel @Inject constructor(
 
     fun check(){
         if(!(_getColor.value!!.isEmpty() || _getSize.value!!.isEmpty())){
-            val basket = BasketStuff(null,_getImage.value!!,_getStuffName.value!!,_getPrice.value,_getSize.value!!,_getColor.value!!,true)
+            val basket = BasketStuff(null,_getImage.value!!,_getStuffName.value!!,_getPrice.value,_getSize.value!!,_getColor.value!!,false,false)
             insert(basket)
             _isComplete.value = true
         }else{

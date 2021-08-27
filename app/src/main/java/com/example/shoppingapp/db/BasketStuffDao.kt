@@ -15,4 +15,7 @@ interface BasketStuffDao {
     @Delete
     suspend fun delete(basketStuff: BasketStuff)
 
+    @Query("UPDATE basketStuff SET isPayment = 1 WHERE uid in (:uid)")
+    fun goPayment(uid: List<String>)
+
 }
