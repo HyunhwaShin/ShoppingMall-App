@@ -62,7 +62,11 @@
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.example.shoppingapp.ui.fragments.PaymentFragment"
-        android:label="PaymentFragment" />
+        android:label="PaymentFragment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.shoppingapp.ui.fragments.menufragments.ShopFragment"

@@ -13,5 +13,5 @@ data class BasketStuff(@PrimaryKey(autoGenerate = true) val uid: Long? = null,
                        @ColumnInfo(name ="stuffSize") val product_size: String= "",
                        @ColumnInfo(name ="stuffColor") val product_color: String= "",
                        @ColumnInfo(name ="checkBox") val checkBox: Boolean = false,
-                       @ColumnInfo(name ="isPayment") val isPayment: Boolean = false,
+                       @ColumnInfo(name ="isPayment") val isPayment: Boolean = false
 ): Serializable

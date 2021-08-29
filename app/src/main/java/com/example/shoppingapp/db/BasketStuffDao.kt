@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BasketStuffDao {
 
-    @Query("SELECT * FROM basketStuff ")
+    @Query("SELECT * FROM basketStuff")
     fun getAllBasketItem() : Flow<List<BasketStuff>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -17,5 +17,11 @@ interface BasketStuffDao {
 
     @Query("UPDATE basketStuff SET isPayment = 1 WHERE uid in (:uid)")
     fun goPayment(uid: List<String>)
+
+    @Query("SELECT * FROM basketStuff WHERE isPayment = 1")
+    fun getBasketToPayment() : Flow<List<BasketStuff>>
+
+    @Query("UPDATE basketStuff SET isPayment = 0 WHERE uid in (:uid)")
+    fun makeEmptyPayment(uid : List<String>)
 
 }
