@@ -34,6 +34,7 @@ class PaymentFragment: Fragment() {
             paymentRecyclerview.layoutManager = LinearLayoutManager(context)
 
             btnExit.setOnClickListener {
+
                 findNavController().navigate(R.id.action_paymentFragment_to_homeFragment)
             }
         }
