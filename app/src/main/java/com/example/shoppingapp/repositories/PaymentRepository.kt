@@ -15,4 +15,9 @@ class PaymentRepository @Inject constructor(
     }
 
     fun makeEmptyPayment(uid : List<String>) = basketStuffDao.makeEmptyPayment(uid)
+
+    //fun getPaymentItemPrice(price : List<Int>) = basketStuffDao.getPaymentItemPrice(price)
+    fun getPaymentItemPrice() : Flow<List<Int>> {
+        return basketStuffDao.getPaymentItemPrice()
+    }
 }

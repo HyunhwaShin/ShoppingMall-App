@@ -24,4 +24,7 @@ interface BasketStuffDao {
     @Query("UPDATE basketStuff SET isPayment = 0 WHERE uid in (:uid)")
     fun makeEmptyPayment(uid : List<String>)
 
+    @Query("SELECT stuffPrice FROM basketStuff WHERE isPayment = 1")
+    fun getPaymentItemPrice() : Flow<List<Int>>
+
 }

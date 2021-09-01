@@ -21,11 +21,17 @@ class PaymentViewModel @Inject constructor(
     private val _getAllItems : MutableLiveData<List<BasketStuff>> = MutableLiveData()
     val getAllItems : LiveData<List<BasketStuff>> = _getAllItems
 
-//    private val _paymentItems : MutableLiveData<List<BasketStuff>> = MutableLiveData(mutableListOf())
-//    val paymentItems : LiveData<List<BasketStuff>> = _paymentItems
+    private val _getPrice : MutableLiveData<List<Int>> = MutableLiveData(listOf())
+    val getPrice : LiveData<List<Int>> = _getPrice
+//
+
+//
+//    private val _totalPrice : MutableLiveData<Int> = MutableLiveData()
+//    val totalPrice : LiveData<Int> = _totalPrice
 
     init {
         allBasketToPayment()
+        getAllPrice()
     }
 
     fun allBasketToPayment() =viewModelScope.launch {
@@ -42,6 +48,19 @@ class PaymentViewModel @Inject constructor(
         withContext(Dispatchers.IO) {
             paymentRepository.makeEmptyPayment(list)
         }
+    }
 
+    fun getAllPrice() = viewModelScope.launch {
+        paymentRepository.getPaymentItemPrice().collect{
+            _getPrice.value =it
+        }
+    }
+
+    fun calculateTotalPrice(priceList: List<Int>): Int {
+        var price : Int = 0
+        for(p in priceList){
+            price += p
+        }
+        return price
     }
 }

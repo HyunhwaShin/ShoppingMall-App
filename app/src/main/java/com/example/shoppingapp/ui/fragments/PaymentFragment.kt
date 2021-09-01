@@ -34,13 +34,19 @@ class PaymentFragment: Fragment() {
             paymentRecyclerview.layoutManager = LinearLayoutManager(context)
 
             btnExit.setOnClickListener {
-
                 findNavController().navigate(R.id.action_paymentFragment_to_homeFragment)
             }
+
         }
         paymentViewModel.getAllItems.observe(viewLifecycleOwner,{
             paymentAdapter.submitList(it)
         })
+        paymentViewModel.getPrice.observe(viewLifecycleOwner,{
+            val price = paymentViewModel.calculateTotalPrice(it)
+            binding.totalPrice.text = price.toString()
+        })
+
+
         return binding.root
     }
 
