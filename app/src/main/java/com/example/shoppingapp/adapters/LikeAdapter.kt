@@ -54,7 +54,7 @@ class LikeAdapter(private val likeViewModel: LikeViewModel): RecyclerView.Adapte
                         // LikeFragment 의 편집모드일 때는 상세화면으로 이동 x
                     }else{
                         var intent = Intent(context,DetailStuffActivity::class.java).apply {
-                            //putExtra()
+                            putExtra("stuff", item)
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         }
                         context.startActivity(intent)

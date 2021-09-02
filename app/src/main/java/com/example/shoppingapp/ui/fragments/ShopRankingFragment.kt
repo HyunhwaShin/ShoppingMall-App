@@ -34,13 +34,9 @@ class ShopRankingFragment: Fragment() {
 
         }
 
-        shopRankingViewModel.exShopRanking.observe(viewLifecycleOwner,{
+        shopRankingViewModel.getAllShop.observe(viewLifecycleOwner,{
             shopAdapter.submitList(it)
         })
-
-//        shopRankingViewModel.getShop.observe(viewLifecycleOwner,{
-//            shopAdapter.submitList(it)
-//        })
 
         return binding.root
     }

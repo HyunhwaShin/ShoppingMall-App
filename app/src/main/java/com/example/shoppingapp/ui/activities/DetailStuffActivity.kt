@@ -22,7 +22,7 @@ class DetailStuffActivity : FragmentActivity(){
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detailstuff)
 
-        var stuff = intent.getSerializableExtra("stuff") as Stuff
+        var stuff = (intent.getSerializableExtra("stuff") as Stuff?)!!
 
         binding.apply {
 

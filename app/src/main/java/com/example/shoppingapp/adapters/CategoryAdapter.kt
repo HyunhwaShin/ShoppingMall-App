@@ -50,6 +50,7 @@ class CategoryAdapter(private val categoryViewModel: CategoryViewModel) : Recycl
 
                 itemView.setOnClickListener {
                     var intent = Intent(context, DetailStuffActivity::class.java).apply {
+                        putExtra("stuff", item)
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     context.startActivity(intent)

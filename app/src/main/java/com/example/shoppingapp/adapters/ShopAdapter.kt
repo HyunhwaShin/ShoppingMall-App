@@ -12,7 +12,6 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ItemShopBinding
 import com.example.shoppingapp.db.ShopRanking
 import com.example.shoppingapp.ui.activities.DetailShopActivity
-import com.example.shoppingapp.ui.fragments.ShopRankingFragment
 
 
 class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
@@ -22,11 +21,12 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
 
         fun bind(item : ShopRanking){
             binding.apply {
-                rankingShopName.text = item.rankingShopName
-                btnBookmark.isChecked = item.bookmarkButton
+                rankingShopName.text = item.shop_name
+                btnBookmark.isChecked = item.isBookmark
 
                 itemView.setOnClickListener {
                     var intent = Intent(context, DetailShopActivity::class.java).apply {
+                        putExtra("stuff", item)
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     context.startActivity(intent)
@@ -36,7 +36,7 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
     }
     val diffCallback = object : DiffUtil.ItemCallback<ShopRanking>(){
         override fun areItemsTheSame(oldItem: ShopRanking, newItem: ShopRanking): Boolean {
-            return oldItem.shopId == newItem.shopId
+            return oldItem.uid == newItem.uid
         }
 
         override fun areContentsTheSame(oldItem: ShopRanking, newItem: ShopRanking): Boolean {

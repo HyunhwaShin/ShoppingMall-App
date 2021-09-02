@@ -33,9 +33,6 @@ class ShopBookmarkFragment: Fragment() {
             shopBookmarkRecyclerview.layoutManager = LinearLayoutManager(context)
         }
 
-        shopRankingViewModel.getAllBookmarkShop.observe(viewLifecycleOwner,{
-            shopAdapter.differ.submitList(it)
-        })
 
         return binding.root
     }

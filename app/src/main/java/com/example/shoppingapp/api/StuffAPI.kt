@@ -1,5 +1,6 @@
 package com.example.shoppingapp.api
 
+import com.example.shoppingapp.db.ShopRanking
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.model.ProductLike
 import retrofit2.Response
@@ -36,4 +37,7 @@ interface StuffAPI {
     @GET("product/category?type=악세서리")
     suspend fun getAccessories():List<Stuff>
 
+    //shop
+    @GET("store")
+    suspend fun getShops():List<ShopRanking>
 }
