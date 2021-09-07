@@ -50,9 +50,7 @@ class MyPageFragment: Fragment() {
 //        deliveryViewModel.getAllDeliveries.observe(viewLifecycleOwner,{
 //            deliveryAdapter.submitList(it)
 //        })
-        deliveryViewModel.getDummy.observe(viewLifecycleOwner,{
-            deliveryAdapter.submitList(it)
-        })
+
         return binding.root
     }
 

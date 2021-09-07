@@ -36,7 +36,9 @@ class PaymentFragment: Fragment() {
             btnExit.setOnClickListener {
                 findNavController().navigate(R.id.action_paymentFragment_to_homeFragment)
             }
-
+            btnNoBankbook.setOnClickListener {
+                btnNoBankbook.isSelected = btnNoBankbook.isSelected != true
+            }
         }
         paymentViewModel.getAllItems.observe(viewLifecycleOwner,{
             paymentAdapter.submitList(it)

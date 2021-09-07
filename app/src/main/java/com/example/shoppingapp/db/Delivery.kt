@@ -1,6 +1,7 @@
 package com.example.shoppingapp.db
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,5 +11,6 @@ data class Delivery(
         @ColumnInfo(name ="deliveryDate") val deliveryDate : String = "",
         @ColumnInfo(name ="deliveryShop") val deliveryShop : String = "",
         @ColumnInfo(name ="deliveryStuff") val deliveryStuff : String = "",
-        @ColumnInfo(name ="deliveryStatus") val deliveryStatus : String = ""
+        @ColumnInfo(name ="deliveryStatus") val deliveryStatus : String = "",
+        @Embedded val basketStuff: BasketStuff
 )
