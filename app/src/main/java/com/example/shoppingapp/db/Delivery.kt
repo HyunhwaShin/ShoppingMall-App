@@ -10,7 +10,11 @@ data class Delivery(
         @PrimaryKey(autoGenerate = true) val deliveryId : Int? = null,
         @ColumnInfo(name ="deliveryDate") val deliveryDate : String = "",
         @ColumnInfo(name ="deliveryShop") val deliveryShop : String = "",
-        @ColumnInfo(name ="deliveryStuff") val deliveryStuff : String = "",
         @ColumnInfo(name ="deliveryStatus") val deliveryStatus : String = "",
+        @ColumnInfo(name ="userName") val userName : String = "",
+        @ColumnInfo(name ="phoneNumber") val phoneNumber : String = "",
+        @ColumnInfo(name ="address") val address : String = "",
+        @ColumnInfo(name ="memo") val memo : String = "",
+        @ColumnInfo(name ="paymentMethod") val paymentMethod : String = "",
         @Embedded val basketStuff: BasketStuff
 )

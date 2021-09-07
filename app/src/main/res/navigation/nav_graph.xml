@@ -64,6 +64,9 @@
         android:name="com.example.shoppingapp.ui.fragments.PaymentFragment"
         android:label="PaymentFragment" >
         <action
+            android:id="@+id/action_paymentFragment_to_successfulPaymentFragment"
+            app:destination="@id/successfulPaymentFragment" />
+        <action
             android:id="@+id/action_paymentFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
@@ -81,6 +84,14 @@
         android:label="UserSettingFragment" >
         <action
             android:id="@+id/action_userSettingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfulPaymentFragment"
+        android:name="com.example.shoppingapp.ui.fragments.SuccessfulPaymentFragment"
+        android:label="SuccessfulPaymentFragment" >
+        <action
+            android:id="@+id/action_successfulPaymentFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

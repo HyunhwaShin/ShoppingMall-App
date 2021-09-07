@@ -29,6 +29,9 @@ class BasketViewModel @Inject constructor(
     private val _totalPrice : MutableLiveData<Int> = MutableLiveData()
     val totalPrice : LiveData<Int> = _totalPrice
 
+    private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
+    val isComplete: LiveData<Boolean> = _isComplete
+
     init {
         getBasketAllItem()
     }
@@ -81,5 +84,8 @@ class BasketViewModel @Inject constructor(
         withContext(Dispatchers.IO){
             basketRepository.deleteFromBasket(basketStuff)
         }
+    }
+    fun setIsComplete(value: Boolean){
+        _isComplete.value = value
     }
 }
