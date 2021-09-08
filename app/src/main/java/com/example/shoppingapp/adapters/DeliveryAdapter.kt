@@ -19,8 +19,8 @@ class DeliveryAdapter: RecyclerView.Adapter<DeliveryAdapter.DeliveryViewHolder>(
         fun bind(item : Delivery){
             binding.apply {
                 deliveryDate.text = item.deliveryDate
-                shopName.text = item.deliveryShop
-                stuffName.text = item.deliveryStuff
+                // shopName.text = item.deliveryShop
+                // stuffName.text = item.deliveryStuff
                 deliveryStatus.text = item.deliveryStatus
             }
         }

@@ -50,7 +50,9 @@ class BasketFragment: Fragment() {
                 findNavController().navigate(R.id.action_basketFragment_to_homeFragment)
             }
             btnGoPayment.setOnClickListener {
-               basketViewModel.setIsComplete(true)
+                if(basketViewModel.basketToPaymentList.value!!.size > 0){
+                    basketViewModel.setIsComplete(true)
+                }
             }
         }
     }

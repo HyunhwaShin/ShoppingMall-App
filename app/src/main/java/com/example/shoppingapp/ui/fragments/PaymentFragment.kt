@@ -41,6 +41,7 @@ class PaymentFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setListener()
         setObserver()
+        ButtonListener()
     }
 
     private fun setListener() {
@@ -54,15 +55,14 @@ class PaymentFragment: Fragment() {
                 paymentViewModel.getPhone(editPhone.text.toString())
                 paymentViewModel.getAddress(editAddress.text.toString())
                 paymentViewModel.getMemo(editDeliveryMemo.text.toString())
+                paymentViewModel.todayDate()
 
                 paymentViewModel.insertCheck()
-
             }
-
-            //btn 실험 중,,,
-            btnNoBankbook.setOnClickListener {
-                btnNoBankbook.isSelected = btnNoBankbook.isSelected != true
-            }
+            btnAccount.setOnClickListener { ButtonListener() }
+            btnCard.setOnClickListener { ButtonListener() }
+            btnPhone.setOnClickListener { ButtonListener() }
+            btnNoBankbook.setOnClickListener { ButtonListener() }
         }
     }
 
@@ -78,16 +78,28 @@ class PaymentFragment: Fragment() {
 
         paymentViewModel.isComplete.observe(viewLifecycleOwner,{
             if (it){
-                paymentViewModel.setIsComplete(false)
-                findNavController().navigate(R.id.action_paymentFragment_to_successfulPaymentFragment)
+                if(binding.btnCheck1.isChecked || binding.btnCheck2.isChecked) {
+                    paymentViewModel.setIsComplete(false)
+                    findNavController().navigate(R.id.action_paymentFragment_to_successfulPaymentFragment)
+                }else{
+                    Toast.makeText(context,"필수사항 동의를 체크해주세요!",Toast.LENGTH_LONG).show()
+                }
             }else{
                 Toast.makeText(context,"모든 정보를 입력해주세요!",Toast.LENGTH_LONG).show()
             }
         })
     }
 
-
-
+    inner class ButtonListener: View.OnClickListener{
+        override fun onClick(view: View?) {
+            when(view?.id){
+                R.id.btn_account -> paymentViewModel.getButton("계좌간편결제")
+                R.id.btn_card -> paymentViewModel.getButton("신용/체크카드")
+                R.id.btn_phone -> paymentViewModel.getButton("휴대폰")
+                R.id.btn_no_bankbook -> paymentViewModel.getButton("무통장")
+            }
+        }
+    }
 
     override fun onStop() {
         super.onStop()

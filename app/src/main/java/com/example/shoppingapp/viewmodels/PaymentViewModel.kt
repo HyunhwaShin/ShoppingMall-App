@@ -1,6 +1,5 @@
 package com.example.shoppingapp.viewmodels
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,12 +9,12 @@ import com.example.shoppingapp.db.Delivery
 import com.example.shoppingapp.repositories.PaymentRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
-import kotlin.coroutines.coroutineContext
 
 @HiltViewModel
 class PaymentViewModel @Inject constructor(
@@ -35,6 +34,10 @@ class PaymentViewModel @Inject constructor(
     private val _getAddress : MutableLiveData<String> = MutableLiveData("")
 
     private val _getMemo : MutableLiveData<String> = MutableLiveData("")
+
+    private val _getDate : MutableLiveData<String> = MutableLiveData("")
+
+    private val _getButton : MutableLiveData<String> = MutableLiveData("")
 
     private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
     val isComplete: LiveData<Boolean> = _isComplete
@@ -77,17 +80,32 @@ class PaymentViewModel @Inject constructor(
     fun getName(value : String){
         _getName.value = value
     }
+
     fun getPhone(value : String){
         _getPhone.value = value
     }
+
     fun getAddress(value : String){
         _getAddress.value = value
     }
+
     fun getMemo(value : String){
         _getMemo.value = value
     }
+
+    fun getButton(value: String){
+        _getButton.value = value
+    }
+
     fun setIsComplete(value: Boolean){
         _isComplete.value = value
+    }
+
+    fun todayDate(){
+        val now = LocalDateTime.now()
+        val date = DateTimeFormatter.ISO_DATE
+        val todayDate = now.format(date)
+        _getDate.value = todayDate
     }
 
     fun insert(delivery: Delivery) = viewModelScope.launch{
@@ -97,10 +115,9 @@ class PaymentViewModel @Inject constructor(
     }
 
     fun insertCheck(){
-        //||_getPaymentMethod 도 넣어야 됑
-        if(!(_getName.value!!.isEmpty() || _getAddress.value!!.isEmpty() ||_getPhone.value!!.isEmpty() ||_getMemo.value!!.isEmpty() )){
-//            val delivery = Delivery(null,"date 가져와야해,,","shop","status",_getName.value!!,_getPhone.value!!,
-//            _getAddress.value!!,_getMemo.value!!,"paymentMethod",)
+        if(!(_getName.value!!.isEmpty() || _getAddress.value!!.isEmpty() ||_getPhone.value!!.isEmpty() ||_getMemo.value!!.isEmpty() ||_getButton.value!!.isEmpty() )){
+//            val delivery = Delivery(null,_getDate.value!!,"status",_getName.value!!,_getPhone.value!!,
+//            _getAddress.value!!,_getMemo.value!!,_getButton.value!!,"basket")
 //            insert(delivery)
             _isComplete.value = true
         }else{

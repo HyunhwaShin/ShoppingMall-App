@@ -55,6 +55,7 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
                 basket?.product_name?.let { it -> selectedDetailViewModel.getSelectedStuffName(it) }
                 basket?.product_price?.let { it -> selectedDetailViewModel.getSelectedPrice(it) }
                 basket?.product_img?.let { it -> selectedDetailViewModel.getSelectedImage(it) }
+                basket?.shop_name?.let { it -> selectedDetailViewModel.getSelectedShopName(it) }
 
                 selectedDetailViewModel.check()
             }
