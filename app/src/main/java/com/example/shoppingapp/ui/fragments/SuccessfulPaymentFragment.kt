@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentSuccessfulpaymentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +21,15 @@ class SuccessfulPaymentFragment : Fragment() {
     ): View? {
 
         binding = FragmentSuccessfulpaymentBinding.inflate(LayoutInflater.from(context))
+
+        binding.apply {
+            btnExit.setOnClickListener {
+                findNavController().navigate(R.id.action_successfulPaymentFragment_to_homeFragment)
+            }
+            btnMypage.setOnClickListener {
+                findNavController().navigate(R.id.action_successfulPaymentFragment_to_myPageFragment)
+            }
+        }
         return binding.root
     }
 }

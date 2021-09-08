@@ -93,5 +93,8 @@
         <action
             android:id="@+id/action_successfulPaymentFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_successfulPaymentFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
     </fragment>
 </navigation>
