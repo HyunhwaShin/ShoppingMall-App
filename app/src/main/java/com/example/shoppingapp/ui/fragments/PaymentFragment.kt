@@ -35,6 +35,8 @@ class PaymentFragment: Fragment() {
 
         paymentViewModel.setAllItem(args.basketStuffList.toList())
 
+        paymentViewModel.calculateTotalPrice(args.basketStuffList.toList())
+
         binding.apply {
             paymentRecyclerview.adapter = paymentAdapter
             paymentRecyclerview.layoutManager = LinearLayoutManager(context)
@@ -85,13 +87,9 @@ class PaymentFragment: Fragment() {
     }
 
     private fun setObserver() {
-        paymentViewModel.setAllItems.observe(viewLifecycleOwner,{
-            paymentAdapter.submitList(it)
-        })
 
         paymentViewModel.setPrice.observe(viewLifecycleOwner,{
-            val price = paymentViewModel.calculateTotalPrice(it)
-            binding.totalPrice.text = price.toString()
+            binding.totalPrice.text = it.toString()
         })
 
         paymentViewModel.isComplete.observe(viewLifecycleOwner,{

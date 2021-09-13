@@ -17,5 +17,6 @@ data class Delivery(
         @ColumnInfo(name ="address") val address : String = "",
         @ColumnInfo(name ="memo") val memo : String = "",
         @ColumnInfo(name ="paymentMethod") val paymentMethod : String = "",
+        @ColumnInfo(name ="isPayment") val isPayment: Boolean = false,
         @ColumnInfo(name = "basketStuffList") val basketStuff: List<BasketStuff>? = null
 ): Parcelable

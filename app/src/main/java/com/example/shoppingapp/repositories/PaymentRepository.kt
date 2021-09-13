@@ -23,6 +23,4 @@ class PaymentRepository @Inject constructor(
 //    }
 
     suspend fun insertDelivery(delivery: Delivery) = deliveryDao.insert(delivery)
-
-//    fun updateIsPayment(delivery: Delivery) = deliveryDao.
 }

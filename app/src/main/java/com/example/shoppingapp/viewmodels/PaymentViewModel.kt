@@ -22,10 +22,9 @@ class PaymentViewModel @Inject constructor(
 ) : ViewModel(){
 
     private val _setAllItems : MutableLiveData<List<BasketStuff>> = MutableLiveData()
-    val setAllItems : LiveData<List<BasketStuff>> = _setAllItems
 
-    private val _setPrice : MutableLiveData<List<Int>> = MutableLiveData(listOf())
-    val setPrice : LiveData<List<Int>> = _setPrice
+    private val _setPrice : MutableLiveData<Int> = MutableLiveData()
+    val setPrice : LiveData<Int> = _setPrice
 
     private val _setName : MutableLiveData<String> = MutableLiveData("")
 
@@ -44,27 +43,17 @@ class PaymentViewModel @Inject constructor(
     private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
     val isComplete: LiveData<Boolean> = _isComplete
 
-    init {
-        setAllPrice()
-    }
-
 
     fun setAllItem(allItem: List<BasketStuff>){
         _setAllItems.value = allItem
     }
 
-    fun setAllPrice() = viewModelScope.launch {
-//        paymentRepository.getPaymentItemPrice().collect{
-//            _setPrice.value =it
-//        }
-    }
-
-    fun calculateTotalPrice(priceList: List<Int>): Int {
+    fun calculateTotalPrice(priceList: List<BasketStuff>) {
         var price : Int = 0
         for(p in priceList){
-            price += p
+            price += p.product_price!!
         }
-        return price
+        _setPrice.value = price
     }
 
     fun setName(value : String){
@@ -98,17 +87,16 @@ class PaymentViewModel @Inject constructor(
         _setDate.value = todayDate
     }
 
-    fun insert(delivery: Delivery) = viewModelScope.launch{
-        withContext(Dispatchers.IO){
+    fun insert(delivery: Delivery) = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
             paymentRepository.insertDelivery(delivery)
-            paymentRepository.updateIsPayment(delivery)
         }
     }
 
     fun insertCheck(){
         if(!(_setName.value!!.isEmpty() || _setAddress.value!!.isEmpty() ||_setPhone.value!!.isEmpty() ||_setMemo.value!!.isEmpty() ||_setButton.value!!.isEmpty() )){
             val delivery = Delivery(null,_setDate.value!!,"status",_setName.value!!,_setPhone.value!!,
-            _setAddress.value!!,_setMemo.value!!,_setButton.value!!,_setAllItems.value!!)
+            _setAddress.value!!,_setMemo.value!!,_setButton.value!!,true, _setAllItems.value!!)
             insert(delivery)
             _isComplete.value = true
         }else{

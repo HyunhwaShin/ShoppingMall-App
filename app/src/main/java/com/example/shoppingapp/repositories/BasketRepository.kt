@@ -16,6 +16,4 @@ class BasketRepository @Inject constructor(
 
     suspend fun deleteFromBasket(basketStuff: BasketStuff) = basketStuffDao.delete(basketStuff)
 
-   // fun goPayment(uid : List<String>) = basketStuffDao.goPayment(uid)
-
 }
