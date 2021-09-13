@@ -21,52 +21,42 @@ class PaymentViewModel @Inject constructor(
     val paymentRepository: PaymentRepository
 ) : ViewModel(){
 
-    private val _getAllItems : MutableLiveData<List<BasketStuff>> = MutableLiveData()
-    val getAllItems : LiveData<List<BasketStuff>> = _getAllItems
+    private val _setAllItems : MutableLiveData<List<BasketStuff>> = MutableLiveData()
+    val setAllItems : LiveData<List<BasketStuff>> = _setAllItems
 
-    private val _getPrice : MutableLiveData<List<Int>> = MutableLiveData(listOf())
-    val getPrice : LiveData<List<Int>> = _getPrice
+    private val _setPrice : MutableLiveData<List<Int>> = MutableLiveData(listOf())
+    val setPrice : LiveData<List<Int>> = _setPrice
 
-    private val _getName : MutableLiveData<String> = MutableLiveData("")
+    private val _setName : MutableLiveData<String> = MutableLiveData("")
 
-    private val _getPhone : MutableLiveData<String> = MutableLiveData("")
+    private val _setPhone : MutableLiveData<String> = MutableLiveData("")
 
-    private val _getAddress : MutableLiveData<String> = MutableLiveData("")
+    private val _setAddress : MutableLiveData<String> = MutableLiveData("")
 
-    private val _getMemo : MutableLiveData<String> = MutableLiveData("")
+    private val _setMemo : MutableLiveData<String> = MutableLiveData("")
 
-    private val _getDate : MutableLiveData<String> = MutableLiveData("")
+    private val _setDate : MutableLiveData<String> = MutableLiveData("")
 
-    private val _getButton : MutableLiveData<String> = MutableLiveData("")
+    private val _setButton : MutableLiveData<String> = MutableLiveData("")
+    val setButton: LiveData<String>
+        get() = _setButton
 
     private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
     val isComplete: LiveData<Boolean> = _isComplete
 
     init {
-        allBasketToPayment()
-        getAllPrice()
+        setAllPrice()
     }
 
-    fun allBasketToPayment() =viewModelScope.launch {
-        paymentRepository.getBasketToPaymentItems().collect {
-            _getAllItems.value = it
-        }
+
+    fun setAllItem(allItem: List<BasketStuff>){
+        _setAllItems.value = allItem
     }
 
-    fun makeEmptyPayment(payment : List<BasketStuff>)=viewModelScope.launch{
-        val list = mutableListOf<String>()
-        for (item in payment){
-            list.add(item.uid.toString())
-        }
-        withContext(Dispatchers.IO) {
-            paymentRepository.makeEmptyPayment(list)
-        }
-    }
-
-    fun getAllPrice() = viewModelScope.launch {
-        paymentRepository.getPaymentItemPrice().collect{
-            _getPrice.value =it
-        }
+    fun setAllPrice() = viewModelScope.launch {
+//        paymentRepository.getPaymentItemPrice().collect{
+//            _setPrice.value =it
+//        }
     }
 
     fun calculateTotalPrice(priceList: List<Int>): Int {
@@ -77,24 +67,24 @@ class PaymentViewModel @Inject constructor(
         return price
     }
 
-    fun getName(value : String){
-        _getName.value = value
+    fun setName(value : String){
+        _setName.value = value
     }
 
-    fun getPhone(value : String){
-        _getPhone.value = value
+    fun setPhone(value : String){
+        _setPhone.value = value
     }
 
-    fun getAddress(value : String){
-        _getAddress.value = value
+    fun setAddress(value : String){
+        _setAddress.value = value
     }
 
-    fun getMemo(value : String){
-        _getMemo.value = value
+    fun setMemo(value : String){
+        _setMemo.value = value
     }
 
-    fun getButton(value: String){
-        _getButton.value = value
+    fun setButton(value: String){
+        _setButton.value = value
     }
 
     fun setIsComplete(value: Boolean){
@@ -105,23 +95,24 @@ class PaymentViewModel @Inject constructor(
         val now = LocalDateTime.now()
         val date = DateTimeFormatter.ISO_DATE
         val todayDate = now.format(date)
-        _getDate.value = todayDate
+        _setDate.value = todayDate
     }
 
     fun insert(delivery: Delivery) = viewModelScope.launch{
         withContext(Dispatchers.IO){
             paymentRepository.insertDelivery(delivery)
+            paymentRepository.updateIsPayment(delivery)
         }
     }
 
     fun insertCheck(){
-        if(!(_getName.value!!.isEmpty() || _getAddress.value!!.isEmpty() ||_getPhone.value!!.isEmpty() ||_getMemo.value!!.isEmpty() ||_getButton.value!!.isEmpty() )){
-//            val delivery = Delivery(null,_getDate.value!!,"status",_getName.value!!,_getPhone.value!!,
-//            _getAddress.value!!,_getMemo.value!!,_getButton.value!!,"basket")
-//            insert(delivery)
+        if(!(_setName.value!!.isEmpty() || _setAddress.value!!.isEmpty() ||_setPhone.value!!.isEmpty() ||_setMemo.value!!.isEmpty() ||_setButton.value!!.isEmpty() )){
+            val delivery = Delivery(null,_setDate.value!!,"status",_setName.value!!,_setPhone.value!!,
+            _setAddress.value!!,_setMemo.value!!,_setButton.value!!,_setAllItems.value!!)
+            insert(delivery)
             _isComplete.value = true
         }else{
-            //_isComplete.value = false
+            _isComplete.value = false
 
         }
     }

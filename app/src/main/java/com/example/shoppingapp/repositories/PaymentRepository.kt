@@ -10,18 +10,19 @@ import javax.inject.Singleton
 
 @Singleton
 class PaymentRepository @Inject constructor(
-    val basketStuffDao: BasketStuffDao,
     val deliveryDao: DeliveryDao
 ) {
-    fun getBasketToPaymentItems() : Flow<List<BasketStuff>> {
-         return basketStuffDao.getBasketToPayment()
-    }
+//    fun getBasketToPaymentItems() : Flow<List<BasketStuff>> {
+//         return basketStuffDao.getBasketToPayment()
+//    }
 
-    fun makeEmptyPayment(uid : List<String>) = basketStuffDao.makeEmptyPayment(uid)
-
-    fun getPaymentItemPrice() : Flow<List<Int>> {
-        return basketStuffDao.getPaymentItemPrice()
-    }
+//    fun makeEmptyPayment(uid : List<String>) = basketStuffDao.makeEmptyPayment(uid)
+//
+//    fun getPaymentItemPrice() : Flow<List<Int>> {
+//        return basketStuffDao.getPaymentItemPrice()
+//    }
 
     suspend fun insertDelivery(delivery: Delivery) = deliveryDao.insert(delivery)
+
+//    fun updateIsPayment(delivery: Delivery) = deliveryDao.
 }

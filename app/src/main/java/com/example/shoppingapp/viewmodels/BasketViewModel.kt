@@ -65,16 +65,16 @@ class BasketViewModel @Inject constructor(
         }
     }
 
-    fun goPaymentList(basketStuff: List<BasketStuff>)=viewModelScope.launch{
-
-        val list = mutableListOf<String>()
-        for (item in basketStuff){
-            list.add(item.uid.toString())
-        }
-        withContext(Dispatchers.IO){
-            basketRepository.goPayment(list)
-        }
-    }
+//    fun goPaymentList(basketStuff: List<BasketStuff>)=viewModelScope.launch{
+//
+//        val list = mutableListOf<String>()
+//        for (item in basketStuff){
+//            list.add(item.uid.toString())
+//        }
+//        withContext(Dispatchers.IO){
+//            basketRepository.goPayment(list)
+//        }
+//    }
 
     fun totalPrice (value : Int){
         _totalPrice.value = value

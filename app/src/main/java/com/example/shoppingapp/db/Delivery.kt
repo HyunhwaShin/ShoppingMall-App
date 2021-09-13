@@ -1,10 +1,12 @@
 package com.example.shoppingapp.db
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName="delivery")
 data class Delivery(
         @PrimaryKey(autoGenerate = true) val deliveryId : Int? = null,
@@ -15,5 +17,5 @@ data class Delivery(
         @ColumnInfo(name ="address") val address : String = "",
         @ColumnInfo(name ="memo") val memo : String = "",
         @ColumnInfo(name ="paymentMethod") val paymentMethod : String = "",
-        @Embedded val basketStuff: BasketStuff
-)
+        @ColumnInfo(name = "basketStuffList") val basketStuff: List<BasketStuff>? = null
+): Parcelable

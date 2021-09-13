@@ -1,5 +1,6 @@
 package com.example.shoppingapp.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,8 @@ class BasketFragment: Fragment() {
             btnGoPayment.setOnClickListener {
                 if(basketViewModel.basketToPaymentList.value!!.size > 0){
                     basketViewModel.setIsComplete(true)
+                }else{
+                    basketViewModel.setIsComplete(false)
                 }
             }
         }
@@ -68,8 +71,8 @@ class BasketFragment: Fragment() {
 
         basketViewModel.isComplete.observe(viewLifecycleOwner,{
             if (it){
-                basketViewModel.goPaymentList(basketViewModel.basketToPaymentList.value!!)
-                findNavController().navigate(R.id.action_basketFragment_to_paymentFragment)
+                val list = basketViewModel.basketToPaymentList.value!!.toTypedArray()
+                findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToPaymentFragment(list))
                 basketViewModel.setIsComplete(false)
             }else{
                 Toast.makeText(context,"선택된 물건이 없습니다!", Toast.LENGTH_LONG).show()

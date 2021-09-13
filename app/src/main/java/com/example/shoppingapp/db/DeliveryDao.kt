@@ -10,4 +10,7 @@ interface DeliveryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(delivery: Delivery)
+
+    @Query("UPDATE delivery SET isPayment = 1 WHERE uid in (:uid)")
+    fun goPayment(uid: List<String>)
 }
