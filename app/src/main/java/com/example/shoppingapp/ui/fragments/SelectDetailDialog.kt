@@ -100,8 +100,7 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
         selectedDetailViewModel.isComplete.observe(viewLifecycleOwner,{
             if(it){
                 Toast.makeText(context,"장바구니에 담겼습니다.", Toast.LENGTH_LONG).show()
-                runBlocking { delay(1500) }
-                selectedDetailViewModel.setIsComplete(false)
+                runBlocking { delay(1000) }
                 dismiss()
             }else{
                 Toast.makeText(context,"색상과 사이즈를 모두 선택해주세요.", Toast.LENGTH_LONG).show()

@@ -40,7 +40,6 @@ class PaymentFragment: Fragment() {
         binding.apply {
             paymentRecyclerview.adapter = paymentAdapter
             paymentRecyclerview.layoutManager = LinearLayoutManager(context)
-
         }
         return binding.root
     }
@@ -88,6 +87,10 @@ class PaymentFragment: Fragment() {
 
     private fun setObserver() {
 
+        paymentViewModel.setAllItems.observe(viewLifecycleOwner,{
+            paymentAdapter.submitList(it)
+        })
+
         paymentViewModel.setPrice.observe(viewLifecycleOwner,{
             binding.totalPrice.text = it.toString()
         })
@@ -95,7 +98,6 @@ class PaymentFragment: Fragment() {
         paymentViewModel.isComplete.observe(viewLifecycleOwner,{
             if (it){
                 if(binding.btnCheck1.isChecked && binding.btnCheck2.isChecked) {
-                    paymentViewModel.setIsComplete(false)
                     findNavController().navigate(R.id.action_paymentFragment_to_successfulPaymentFragment)
                 }else{
                     Toast.makeText(context,"필수사항 동의를 모두 체크해주세요!",Toast.LENGTH_LONG).show()

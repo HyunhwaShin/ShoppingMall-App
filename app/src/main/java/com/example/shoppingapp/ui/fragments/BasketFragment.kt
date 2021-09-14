@@ -1,6 +1,5 @@
 package com.example.shoppingapp.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,10 +50,10 @@ class BasketFragment: Fragment() {
                 findNavController().navigate(R.id.action_basketFragment_to_homeFragment)
             }
             btnGoPayment.setOnClickListener {
-                if(basketViewModel.basketToPaymentList.value!!.size > 0){
-                    basketViewModel.setIsComplete(true)
+                if(basketViewModel.basketToPaymentList.value!!.size > 0) {
+                    basketViewModel.setIsComplete()
                 }else{
-                    basketViewModel.setIsComplete(false)
+                    Toast.makeText(context,"선택된 물건이 없습니다!", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -70,13 +69,8 @@ class BasketFragment: Fragment() {
         })
 
         basketViewModel.isComplete.observe(viewLifecycleOwner,{
-            if (it){
-                val list = basketViewModel.basketToPaymentList.value!!.toTypedArray()
-                findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToPaymentFragment(list))
-                basketViewModel.setIsComplete(false)
-            }else{
-                Toast.makeText(context,"선택된 물건이 없습니다!", Toast.LENGTH_LONG).show()
-            }
+            val list = basketViewModel.basketToPaymentList.value!!.toTypedArray()
+            findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToPaymentFragment(list))
         })
     }
 }

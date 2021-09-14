@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.db.BasketStuff
 import com.example.shoppingapp.db.Delivery
+import com.example.shoppingapp.other.SingleLiveEvent
 import com.example.shoppingapp.repositories.PaymentRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
@@ -22,6 +22,7 @@ class PaymentViewModel @Inject constructor(
 ) : ViewModel(){
 
     private val _setAllItems : MutableLiveData<List<BasketStuff>> = MutableLiveData()
+    val setAllItems : LiveData<List<BasketStuff>> = _setAllItems
 
     private val _setPrice : MutableLiveData<Int> = MutableLiveData()
     val setPrice : LiveData<Int> = _setPrice
@@ -40,9 +41,13 @@ class PaymentViewModel @Inject constructor(
     val setButton: LiveData<String>
         get() = _setButton
 
-    private val _isComplete: MutableLiveData<Boolean> = MutableLiveData()
-    val isComplete: LiveData<Boolean> = _isComplete
+    private val _isComplete = SingleLiveEvent<Boolean>()
+    val isComplete : LiveData<Boolean>
+        get() = _isComplete
 
+    init {
+
+    }
 
     fun setAllItem(allItem: List<BasketStuff>){
         _setAllItems.value = allItem
@@ -76,8 +81,8 @@ class PaymentViewModel @Inject constructor(
         _setButton.value = value
     }
 
-    fun setIsComplete(value: Boolean){
-        _isComplete.value = value
+    fun setIsComplete(){
+        _isComplete.call()
     }
 
     fun todayDate(){
