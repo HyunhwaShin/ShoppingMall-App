@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingapp.R
 import com.example.shoppingapp.adapters.BasketAdapter
 import com.example.shoppingapp.databinding.FragmentBasketBinding
+import com.example.shoppingapp.other.EventObserver
 import com.example.shoppingapp.viewmodels.BasketViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,9 +52,9 @@ class BasketFragment: Fragment() {
             }
             btnGoPayment.setOnClickListener {
                 if(basketViewModel.basketToPaymentList.value!!.size > 0) {
-                    basketViewModel.setIsComplete()
+                    basketViewModel.setIsComplete(true)
                 }else{
-                    Toast.makeText(context,"선택된 물건이 없습니다!", Toast.LENGTH_LONG).show()
+                    basketViewModel.setIsComplete(false)
                 }
             }
         }
@@ -68,9 +69,25 @@ class BasketFragment: Fragment() {
             binding.totalPrice.text = it.toString()
         })
 
-        basketViewModel.isComplete.observe(viewLifecycleOwner,{
-            val list = basketViewModel.basketToPaymentList.value!!.toTypedArray()
-            findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToPaymentFragment(list))
+//        basketViewModel.isComplete.observe(viewLifecycleOwner,{ event ->
+//            event.getContentIfNotHandled()?.let {
+//                if(it){
+//                    val list = basketViewModel.basketToPaymentList.value!!.toTypedArray()
+//                    findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToPaymentFragment(list))
+//                }else{
+//                    Toast.makeText(context,"선택된 물건이 없습니다!", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        })
+
+        basketViewModel.isComplete.observe(viewLifecycleOwner,EventObserver {
+            if (it) {
+                val list = basketViewModel.basketToPaymentList.value!!.toTypedArray()
+                findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToPaymentFragment(list))
+            } else {
+                Toast.makeText(context, "선택된 물건이 없습니다!", Toast.LENGTH_LONG).show()
+            }
         })
     }
+
 }

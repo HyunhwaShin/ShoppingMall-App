@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.db.BasketStuff
+import com.example.shoppingapp.other.EventWrapper
 import com.example.shoppingapp.other.SingleLiveEvent
 import com.example.shoppingapp.repositories.BasketRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,8 +30,8 @@ class BasketViewModel @Inject constructor(
     private val _totalPrice : MutableLiveData<Int> = MutableLiveData()
     val totalPrice : LiveData<Int> = _totalPrice
 
-    private val _isComplete = SingleLiveEvent<Boolean>()
-    val isComplete: LiveData<Boolean>
+    private val _isComplete = MutableLiveData<EventWrapper<Boolean>>()
+    val isComplete: LiveData<EventWrapper<Boolean>>
         get() = _isComplete
 
     init {
@@ -75,7 +76,7 @@ class BasketViewModel @Inject constructor(
             basketRepository.deleteFromBasket(basketStuff)
         }
     }
-    fun setIsComplete() {
-        _isComplete.call()
+    fun setIsComplete(value : Boolean) {
+        _isComplete.value = EventWrapper(value)
     }
 }
