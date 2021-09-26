@@ -40,4 +40,6 @@ interface StuffAPI {
     //shop
     @GET("store")
     suspend fun getShops():List<ShopRanking>
+
+
 }
