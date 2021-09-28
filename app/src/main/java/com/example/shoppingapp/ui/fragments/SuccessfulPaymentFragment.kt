@@ -20,7 +20,7 @@ class SuccessfulPaymentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentSuccessfulpaymentBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentSuccessfulpaymentBinding.inflate(inflater, container, false)
 
         binding.apply {
             btnExit.setOnClickListener {

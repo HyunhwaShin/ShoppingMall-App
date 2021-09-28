@@ -37,7 +37,7 @@ class UserSettingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentUsersettingBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentUsersettingBinding.inflate(inflater, container, false)
 
         binding.apply {
             btnStart.setOnClickListener {

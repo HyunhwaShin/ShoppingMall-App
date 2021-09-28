@@ -15,14 +15,12 @@ class ShopRepository @Inject constructor(
 
     suspend fun getShopsAPI(): List<ShopRanking> = RetrofitInstance.api.getShops()
 
-//    suspend fun insertBookmarkShop(shopRanking: ShopRanking): Long {
-//        return shopRankingDao.insertShop(shopRanking)
-//    }
-//    suspend fun deleteBookmarkShop(shopRanking: ShopRanking) {
-//        return shopRankingDao.deleteShop(shopRanking)
-//    }
-
     fun getAllBookmarkShops(): Flow<List<ShopRanking>>{
         return shopRankingDao.getAllBookmarkShops()
     }
+
+    fun insertBookmark(shopRanking: ShopRanking) = shopRankingDao.insertBookmark(shopRanking.uid)
+
+    fun deleteBookmark(shopRanking: ShopRanking) = shopRankingDao.deleteBookmark(shopRanking.uid)
+
 }

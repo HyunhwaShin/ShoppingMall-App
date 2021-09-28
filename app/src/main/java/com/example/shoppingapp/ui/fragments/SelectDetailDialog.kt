@@ -29,7 +29,7 @@ class SelectDetailDialog : BottomSheetDialogFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSelectdetaildialogBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentSelectdetaildialogBinding.inflate(inflater, container, false)
         isCancelable = false
         selectDetailAdapter = SelectDetailAdapter()
 

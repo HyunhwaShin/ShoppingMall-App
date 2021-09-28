@@ -27,7 +27,7 @@ class BasketFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBasketBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentBasketBinding.inflate(inflater, container, false)
 
         basketAdapter = BasketAdapter(basketViewModel)
 

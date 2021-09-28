@@ -8,13 +8,13 @@ interface ShopRankingDao {
     @Query("SELECT * FROM shopRanking")
     fun getAll() : Flow<List<ShopRanking>>
 
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertShop(shopRanking: ShopRanking) : Long
-//
-//    @Delete
-//    suspend fun deleteShop(shopRanking: ShopRanking)
-
-
     @Query("SELECT * FROM shopRanking WHERE bookmarkButton = 1")
     fun getAllBookmarkShops() : Flow<List<ShopRanking>>
+
+    @Query("UPDATE shopRanking SET bookmarkButton = 1 WHERE uid = :uid")
+    fun insertBookmark(uid: String)
+
+    @Query("UPDATE shopRanking SET bookmarkButton = 0 WHERE uid = :uid")
+    fun deleteBookmark(uid: String)
+
 }

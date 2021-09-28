@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shoppingapp.R
-import com.example.shoppingapp.adapters.ShopAdapter
 import com.example.shoppingapp.adapters.ShopViewPagerAdapter
 import com.example.shoppingapp.databinding.FragmentShopBinding
-import com.example.shoppingapp.viewmodels.ShopRankingViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +24,7 @@ class ShopFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentShopBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentShopBinding.inflate(inflater, container, false)
 
         val pagerAdapter = ShopViewPagerAdapter(this)
         binding.apply {

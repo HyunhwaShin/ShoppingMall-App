@@ -27,7 +27,7 @@ class CategoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCategoryBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentCategoryBinding.inflate(inflater, container, false)
 
         categoryAdapter = CategoryAdapter(categoryViewModel)
         val gridLayoutManager = GridLayoutManager(requireContext(),3)

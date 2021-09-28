@@ -12,9 +12,10 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ItemShopBinding
 import com.example.shoppingapp.db.ShopRanking
 import com.example.shoppingapp.ui.activities.DetailShopActivity
+import com.example.shoppingapp.viewmodels.ShopRankingViewModel
 
 
-class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
+class ShopRankingAdapter(private val shopRankingViewModel: ShopRankingViewModel) : RecyclerView.Adapter<ShopRankingAdapter.ShopViewHolder>() {
     lateinit var context : Context
 
     inner class ShopViewHolder(private var binding : ItemShopBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -23,10 +24,13 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
             binding.apply {
                 rankingShopName.text = item.shop_name
                 btnBookmark.isChecked = item.isBookmark
+                btnBookmark.setOnCheckedChangeListener { btn, isCheck ->
+                    shopRankingViewModel.toggleBookmarkItemList(isCheck, item)
+                }
 
                 itemView.setOnClickListener {
                     var intent = Intent(context, DetailShopActivity::class.java).apply {
-                        putExtra("stuff", item)
+                        putExtra("shop", item)
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     context.startActivity(intent)
@@ -47,7 +51,7 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
 
     fun submitList(list: List<ShopRanking>) = differ.submitList(list)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopAdapter.ShopViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopRankingAdapter.ShopViewHolder {
         context=parent.context
         return ShopViewHolder(
             DataBindingUtil.inflate(
@@ -58,7 +62,7 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
             )
         )
     }
-    override fun onBindViewHolder(holder: ShopAdapter.ShopViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShopRankingAdapter.ShopViewHolder, position: Int) {
         val shop = differ.currentList[position]
         holder.bind(shop)
     }

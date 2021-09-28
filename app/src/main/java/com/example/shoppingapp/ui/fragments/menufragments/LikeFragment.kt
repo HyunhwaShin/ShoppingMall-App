@@ -27,7 +27,7 @@ class LikeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLikeBinding.inflate(LayoutInflater.from(context))
+        binding = FragmentLikeBinding.inflate(inflater, container, false)
 
         likeAdapter = LikeAdapter(likeViewModel)
         val gridLayoutManager = GridLayoutManager(requireContext(),2)
