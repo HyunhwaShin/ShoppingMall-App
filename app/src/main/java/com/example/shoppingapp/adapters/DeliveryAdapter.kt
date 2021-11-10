@@ -25,13 +25,13 @@ class DeliveryAdapter: RecyclerView.Adapter<DeliveryAdapter.DeliveryViewHolder>(
 
         fun bind(item : Delivery){
             binding.apply {
-                deliveryDate.text = item.deliveryDate
-                 shopName.text = item.basketStuff[0].shop_name
-                 stuffName.text = item.basketStuff[0].product_name
-                deliveryStatus.text = item.deliveryStatus
+                deliveryDate.text = item.orderDate
+                 shopName.text = item.shopName
+                 stuffName.text = item.name
+                deliveryStatus.text = item.orderInfo
             }
             var launch = CoroutineScope(Dispatchers.IO).launch {
-                val inputStream = URL(item.basketStuff[0].product_img).openStream()
+                val inputStream = URL(item.img).openStream()
                 val bitmap = BitmapFactory.decodeStream(inputStream)
                 withContext(Dispatchers.Main) {
                     Glide.with(binding.root)
@@ -44,7 +44,7 @@ class DeliveryAdapter: RecyclerView.Adapter<DeliveryAdapter.DeliveryViewHolder>(
 
     val differCallback = object : DiffUtil.ItemCallback<Delivery>(){
         override fun areItemsTheSame(oldItem: Delivery, newItem: Delivery): Boolean {
-            return oldItem.deliveryId == newItem.deliveryId
+            return oldItem.orderNumber == newItem.orderNumber
         }
 
         override fun areContentsTheSame(oldItem: Delivery, newItem: Delivery): Boolean {

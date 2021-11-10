@@ -1,8 +1,6 @@
 package com.example.shoppingapp.api
 
-import com.example.shoppingapp.db.ShopRanking
-import com.example.shoppingapp.db.Stuff
-import com.example.shoppingapp.db.User
+import com.example.shoppingapp.db.*
 import com.example.shoppingapp.model.ProductLike
 import retrofit2.Response
 import retrofit2.http.GET
@@ -49,5 +47,16 @@ interface StuffAPI {
     //user
     @POST("registerUser")
     suspend fun postUser(user: User) :String
+
+    //shop
+    @POST("store_like")
+    suspend fun storeLike(storeLike : StoreLikeDto) :String
+
+    @POST("store_delete")
+    suspend fun storeDelete(storeLike : StoreLikeDto) :String
+
+    @GET("myStore")
+    suspend fun myStore(email : String) : List<ShopRankingDao>
+
 
 }

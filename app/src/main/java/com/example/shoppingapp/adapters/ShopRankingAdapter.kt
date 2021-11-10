@@ -11,8 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ItemShopBinding
 import com.example.shoppingapp.db.ShopRanking
+import com.example.shoppingapp.db.StoreLikeDto
+import com.example.shoppingapp.repositories.UserRepository
 import com.example.shoppingapp.ui.activities.DetailShopActivity
 import com.example.shoppingapp.viewmodels.ShopRankingViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 class ShopRankingAdapter(private val shopRankingViewModel: ShopRankingViewModel) : RecyclerView.Adapter<ShopRankingAdapter.ShopViewHolder>() {
@@ -25,7 +32,7 @@ class ShopRankingAdapter(private val shopRankingViewModel: ShopRankingViewModel)
                 rankingShopName.text = item.shop_name
                 btnBookmark.isChecked = item.isBookmark
                 btnBookmark.setOnCheckedChangeListener { btn, isCheck ->
-                    shopRankingViewModel.toggleBookmarkItemList(isCheck, item)
+                    shopRankingViewModel.postStoreLike(item.uid)
                 }
 
                 itemView.setOnClickListener {

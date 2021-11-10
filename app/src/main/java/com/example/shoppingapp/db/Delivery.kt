@@ -9,14 +9,17 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName="delivery")
 data class Delivery(
-        @PrimaryKey(autoGenerate = true) val deliveryId : Int? = null,
-        @ColumnInfo(name ="deliveryDate") val deliveryDate : String = "",
-        @ColumnInfo(name ="deliveryStatus") val deliveryStatus : String = "",
-        @ColumnInfo(name ="userName") val userName : String = "",
+        @PrimaryKey(autoGenerate = true) val orderNumber : Int? = null,
+        @ColumnInfo(name ="orderDate") val orderDate : String = "",
+        @ColumnInfo(name ="userEmail") val userEmail : String = "",
+        @ColumnInfo(name ="name") val name : String = "",
         @ColumnInfo(name ="phoneNumber") val phoneNumber : String = "",
-        @ColumnInfo(name ="address") val address : String = "",
+        @ColumnInfo(name ="addr") val addr : String = "",
         @ColumnInfo(name ="memo") val memo : String = "",
-        @ColumnInfo(name ="paymentMethod") val paymentMethod : String = "",
+        @ColumnInfo(name ="payType") val payType : String = "",
+        @ColumnInfo(name ="price") val price : String = "",
+        @ColumnInfo(name ="orderInfo") val orderInfo : String = "",
         @ColumnInfo(name ="isPayment") val isPayment: Boolean = false,
-        @ColumnInfo(name = "basketStuffList") val basketStuff: List<BasketStuff> = listOf()
+        @ColumnInfo(name ="shopName") val shopName: String = "",
+        @ColumnInfo(name ="img") val img: String = ""
 ): Parcelable

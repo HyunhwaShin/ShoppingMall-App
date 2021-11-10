@@ -57,7 +57,7 @@ class PaymentFragment: Fragment() {
             }
 
             btnPayment.setOnClickListener {
-                paymentViewModel.setName(editUserName.text.toString())
+                //paymentViewModel.setName(editUserName.text.toString())
                 paymentViewModel.setPhone(editPhone.text.toString())
                 paymentViewModel.setAddress(editAddress.text.toString())
                 paymentViewModel.setMemo(editDeliveryMemo.text.toString())

@@ -8,8 +8,10 @@ import com.example.shoppingapp.db.BasketStuff
 import com.example.shoppingapp.db.Delivery
 import com.example.shoppingapp.other.SingleLiveEvent
 import com.example.shoppingapp.repositories.PaymentRepository
+import com.example.shoppingapp.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
@@ -18,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PaymentViewModel @Inject constructor(
-    val paymentRepository: PaymentRepository
+    val paymentRepository: PaymentRepository,
+    val userRepository: UserRepository
 ) : ViewModel(){
 
     private val _setAllItems : MutableLiveData<List<BasketStuff>> = MutableLiveData()
@@ -40,6 +43,8 @@ class PaymentViewModel @Inject constructor(
     private val _setButton : MutableLiveData<String> = MutableLiveData("")
     val setButton: LiveData<String>
         get() = _setButton
+
+    private val _setUserEmail : MutableLiveData<String> = MutableLiveData("")
 
     private val _isComplete = SingleLiveEvent<Boolean>()
     val isComplete : LiveData<Boolean>
@@ -81,6 +86,12 @@ class PaymentViewModel @Inject constructor(
         _setButton.value = value
     }
 
+    fun setUserEmail()=viewModelScope.launch {
+        userRepository.userInformation().collect{
+            _setUserEmail.value = it.email
+        }
+    }
+
     fun setIsComplete(){
         _isComplete.call()
     }
@@ -100,9 +111,10 @@ class PaymentViewModel @Inject constructor(
 
     fun insertCheck(){
         if(!(_setName.value!!.isEmpty() || _setAddress.value!!.isEmpty() ||_setPhone.value!!.isEmpty() ||_setMemo.value!!.isEmpty() ||_setButton.value!!.isEmpty() )){
-            val delivery = Delivery(null,_setDate.value!!,"status",_setName.value!!,_setPhone.value!!,
-            _setAddress.value!!,_setMemo.value!!,_setButton.value!!,true, _setAllItems.value!!)
-            insert(delivery)
+//            val delivery = Delivery(null,_setDate.value!!,_setUserEmail.value!!,_setName.value!!,
+//                "status",,_setPhone.value!!,
+//            _setAddress.value!!,_setMemo.value!!,_setButton.value!!,true, _setAllItems.value!!)
+//            insert(delivery)
             _isComplete.value = true
         }else{
             _isComplete.value = false

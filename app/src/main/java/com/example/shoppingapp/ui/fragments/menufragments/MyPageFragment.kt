@@ -54,22 +54,23 @@ class MyPageFragment: Fragment() {
     private fun setObserver(){
         deliveryViewModel.getAllDeliveries.observe(viewLifecycleOwner,{
             val deliveryList = mutableListOf<Delivery>()
-            for(delivery in it){
-                for(stuff in delivery.basketStuff){
+            for(delivery in deliveryList){
                     deliveryList.add(Delivery(
-                        delivery.deliveryId,
-                        delivery.deliveryDate,
-                        delivery.deliveryStatus,
-                        delivery.userName,
+                        delivery.orderNumber,
+                        delivery.orderDate,
+                        delivery.userEmail,
+                        delivery.name,
                         delivery.phoneNumber,
-                        delivery.address,
+                        delivery.addr,
                         delivery.memo,
-                        delivery.paymentMethod,
+                        delivery.payType,
+                        delivery.price,
+                        delivery.orderInfo,
                         delivery.isPayment,
-                        listOf(stuff)
+                        delivery.shopName,
+                        delivery.img
                     ))
                 }
-            }
             deliveryAdapter.submitList(deliveryList)
         })
         deliveryViewModel.user.observe(viewLifecycleOwner,{

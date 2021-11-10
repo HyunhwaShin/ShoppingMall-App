@@ -2,6 +2,7 @@ package com.example.shoppingapp.repositories
 
 import com.example.shoppingapp.db.ShopRanking
 import com.example.shoppingapp.db.ShopRankingDao
+import com.example.shoppingapp.db.StoreLikeDto
 import com.example.shoppingapp.db.Stuff
 import com.example.shoppingapp.di.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +15,8 @@ class ShopRepository @Inject constructor(
 ){
 
     suspend fun getShopsAPI(): List<ShopRanking> = RetrofitInstance.api.getShops()
+
+    suspend fun postStoreLikeAPI(storeLike : StoreLikeDto) :String = RetrofitInstance.api.storeLike(storeLike)
 
     fun getAllBookmarkShops(): Flow<List<ShopRanking>>{
         return shopRankingDao.getAllBookmarkShops()
